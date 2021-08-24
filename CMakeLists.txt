@@ -58,4 +58,4 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/LittleFs)
 # Properties->Linker->Input->Additional Dependencies
 # target_link_libraries (app  math)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND ${SIZE} "${PROJECT_NAME}")
+# add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND ${SIZE} "${PROJECT_NAME}")
