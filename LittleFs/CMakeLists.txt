@@ -2,6 +2,7 @@ target_sources(${PROJECT_NAME}
     PRIVATE
     # {{BEGIN_TARGET_SOURCES}}
     # ${CMAKE_CURRENT_LIST_DIR}/Port/littlefs_fal_port.c
+    ${CMAKE_CURRENT_LIST_DIR}/Port/littlefs_ram_port.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/lfs_util.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/lfs.c
 
