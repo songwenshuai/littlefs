@@ -37,7 +37,6 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 # Pick up the common stuff
 # add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../SEGGER_TOOL_COMMON COMMON.OUT)
 # add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/FAL)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/Win32)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/LittleFs)
 
 # Set the directories that should be included in the build command for this target

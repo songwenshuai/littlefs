@@ -19,8 +19,6 @@
 #include <stdlib.h> /* needed for malloc, free */
 #include <stdarg.h> /* needed for va_*         */
 
-#define LFS_LOOKAHEAD_MAX 128
-
 /*
  * vscprintf:
  * MSVC implements this as _vscprintf, thus we just 'symlink' it here
@@ -324,8 +322,8 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
     cfg.cache_size  = dumplfs_cfg->cache_size;
     cfg.block_cycles = dumplfs_cfg->block_cycles;
     cfg.block_count = fs_size / cfg.block_size;
-    if (32 * ((cfg.block_count + 31) / 32) > LFS_LOOKAHEAD_MAX)
-        cfg.lookahead_size = LFS_LOOKAHEAD_MAX;
+    if (32 * ((cfg.block_count + 31) / 32) > dumplfs_cfg->lookahead_size)
+        cfg.lookahead_size = dumplfs_cfg->lookahead_size;
 
 	data = malloc(fs_size);
 	if (!data) {
@@ -370,8 +368,8 @@ int mklfs(mklfs_cfg_t *mklfs_cfg) {
     cfg.cache_size  = mklfs_cfg->cache_size;
     cfg.block_cycles = mklfs_cfg->block_cycles;
     cfg.block_count = mklfs_cfg->fs_size / cfg.block_size;
-    if (32 * ((cfg.block_count + 31) / 32) > LFS_LOOKAHEAD_MAX)
-        cfg.lookahead_size = LFS_LOOKAHEAD_MAX;
+    if (32 * ((cfg.block_count + 31) / 32) > mklfs_cfg->lookahead_size)
+        cfg.lookahead_size = mklfs_cfg->lookahead_size;
 
     cfg.context     = NULL;
 

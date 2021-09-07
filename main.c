@@ -2,6 +2,7 @@
 #include "lfs.h"
 #include "littlefs_ram_port.h"
 
+#define _LOOKAHEAD_MAX  128
 #define _BLOCK_SIZE_    4096
 #define _PROG_SIZE_     256
 #define _READ_SIZE_     256
@@ -24,6 +25,7 @@ int main(int argc, char* argv[], char* envp[]) {
   mklfs_cfg.read_size       = _READ_SIZE_;
   mklfs_cfg.cache_size      = _CACHE_SIZE;
   mklfs_cfg.block_cycles    = _BLOCK_CYCLES;
+  mklfs_cfg.lookahead_size  = _LOOKAHEAD_MAX;
   mklfs_cfg.fs_size         = _FS_SIZE_;
 
   mklfs(&mklfs_cfg);

@@ -23,6 +23,7 @@ typedef struct mklfs_cfg {
     lfs_size_t block_size;   // Block size <block-size>
     lfs_size_t prog_size;    // Prog size <prog-size>
     lfs_size_t read_size;    // Read size <read-size>
+    lfs_size_t lookahead_size;
     lfs_size_t cache_size;
     int32_t block_cycles;
 } mklfs_cfg_t;
@@ -33,6 +34,7 @@ typedef struct dumplfs_cfg {
     lfs_size_t block_size; // Block size <block-size>
     lfs_size_t read_size;  // Read size <read-size>
     lfs_size_t prog_size;  // Prog size <prog-size>
+    lfs_size_t lookahead_size;
     lfs_size_t cache_size;
     int32_t block_cycles;
 } dumplfs_cfg_t;
