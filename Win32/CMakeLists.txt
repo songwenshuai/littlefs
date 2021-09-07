@@ -1,7 +1,6 @@
 target_sources(${PROJECT_NAME}
     PRIVATE
     # {{BEGIN_TARGET_SOURCES}}
-    ${CMAKE_CURRENT_LIST_DIR}/Source/getopt.c
     # {{END_TARGET_SOURCES}}
 )
 
