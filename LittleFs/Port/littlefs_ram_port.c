@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 #include "littlefs_cfg.h"
-#include "lfs.h"
 #include "lfs_util.h"
+#include "lfs.h"
 #include "littlefs_ram_port.h"
 #ifdef _MSC_VER
 #include "dirent.h"

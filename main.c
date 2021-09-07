@@ -2,7 +2,7 @@
 #include "lfs.h"
 #include "littlefs_ram_port.h"
 
-#if 0
+#if 1
 static mklfs_cfg_t mklfs_cfg;
 
 /*********************************************************************
