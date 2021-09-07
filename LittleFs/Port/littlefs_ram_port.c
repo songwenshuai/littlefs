@@ -8,7 +8,9 @@
 #include "lfs.h"
 #include "lfs_util.h"
 #include "littlefs_ram_port.h"
+#ifdef _MSC_VER
 #include "dirent.h"
+#endif
 
 #include <ctype.h>
 #include <string.h>
