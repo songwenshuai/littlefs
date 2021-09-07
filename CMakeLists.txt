@@ -35,8 +35,6 @@ set(SOURCES
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Pick up the common stuff
-# add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../SEGGER_TOOL_COMMON COMMON.OUT)
-# add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/FAL)
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/LittleFs)
 
 # Set the directories that should be included in the build command for this target
@@ -57,5 +55,3 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/LittleFs)
 
 # Properties->Linker->Input->Additional Dependencies
 # target_link_libraries (app  math)
-
-# add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND ${SIZE} "${PROJECT_NAME}")
