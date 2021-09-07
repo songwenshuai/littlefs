@@ -2,6 +2,7 @@
 #include "lfs.h"
 #include "littlefs_ram_port.h"
 
+#if 0
 static mklfs_cfg_t mklfs_cfg;
 
 /*********************************************************************
@@ -9,8 +10,8 @@ static mklfs_cfg_t mklfs_cfg;
 *       main()
 */
 int main(int argc, char* argv[], char* envp[]) {
-  mklfs_cfg.src             = _SRC_DIR;
-  mklfs_cfg.dst             = _DST_DIR;
+  mklfs_cfg.src             = "./";
+  mklfs_cfg.dst             = "./mklfs.img";
   mklfs_cfg.block_size      = _BLOCK_SIZE_;
   mklfs_cfg.prog_size       = _PROG_SIZE_;
   mklfs_cfg.read_size       = _READ_SIZE_;
@@ -23,3 +24,26 @@ int main(int argc, char* argv[], char* envp[]) {
 
   return (0);
 }
+
+#else
+static dumplfs_cfg_t dumplfs_cfg;
+
+/*********************************************************************
+*
+*       main()
+*/
+int main(int argc, char* argv[], char* envp[]) {
+  dumplfs_cfg.src             = "./mklfs.img";
+  dumplfs_cfg.dstdir          = "./dump/";
+  dumplfs_cfg.block_size      = _BLOCK_SIZE_;
+  dumplfs_cfg.prog_size       = _PROG_SIZE_;
+  dumplfs_cfg.read_size       = _READ_SIZE_;
+  dumplfs_cfg.cache_size      = _CACHE_SIZE;
+  dumplfs_cfg.block_cycles    = _BLOCK_CYCLES;
+  dumplfs_cfg.lookahead_size  = _LOOKAHEAD_MAX;
+
+  dumplfs(&dumplfs_cfg);
+
+  return (0);
+}
+#endif
