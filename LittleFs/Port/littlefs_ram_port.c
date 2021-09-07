@@ -6,6 +6,7 @@
  */
 #include "littlefs_cfg.h"
 #include "lfs.h"
+#include "lfs_util.h"
 #include "littlefs_ram_port.h"
 #include "dirent.h"
 
