@@ -19,6 +19,8 @@
 #include <stdlib.h> /* needed for malloc, free */
 #include <stdarg.h> /* needed for va_*         */
 
+#define LFS_LOOKAHEAD_MAX 128
+
 /*
  * vscprintf:
  * MSVC implements this as _vscprintf, thus we just 'symlink' it here
@@ -172,48 +174,6 @@ static void compact(char *src) {
     }
 }
 
-int lfs_ls( lfs_t *lfs, const char *path )
-{
-    lfs_dir_t dir;
-    int err = lfs_dir_open( lfs, &dir, path );
-    if( err )
-    {
-        return err;
-    }
-    struct lfs_info info;
-    while( true )
-    {
-        int res = lfs_dir_read( lfs, &dir, &info );
-        if( res < 0 )
-        {
-            return res;
-        }
-        if( res == 0 )
-        {
-            break;
-        }
-        printf( "\t%s", info.name );
-        switch( info.type )
-        {
-            case LFS_TYPE_REG:
-                printf( "\t\t%u Byte \r\n", info.size );
-                break;
-            case LFS_TYPE_DIR:
-                printf( "\t\t\tdir\r\n" );
-                break;
-            default:
-                printf( "?\r\n" );
-                break;
-        }
-    }
-    err = lfs_dir_close( lfs, &dir );
-    if( err )
-    {
-        return err;
-    }
-    return 0;
-}
-
 static int dump_file(const char *srcpath, const char  *dstpath) {
 	int r;
 	lfs_file_t lfs_f;
@@ -361,8 +321,11 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
     cfg.block_size  = dumplfs_cfg->block_size;
     cfg.read_size   = dumplfs_cfg->read_size;
     cfg.prog_size   = dumplfs_cfg->prog_size;
+    cfg.cache_size  = dumplfs_cfg->cache_size;
+    cfg.block_cycles = dumplfs_cfg->block_cycles;
     cfg.block_count = fs_size / cfg.block_size;
-    cfg.lookahead_size   = 128;
+    if (32 * ((cfg.block_count + 31) / 32) > LFS_LOOKAHEAD_MAX)
+        cfg.lookahead_size = LFS_LOOKAHEAD_MAX;
 
 	data = malloc(fs_size);
 	if (!data) {
@@ -404,8 +367,12 @@ int mklfs(mklfs_cfg_t *mklfs_cfg) {
     cfg.block_size  = mklfs_cfg->block_size;
     cfg.read_size   = mklfs_cfg->read_size;
     cfg.prog_size   = mklfs_cfg->prog_size;
+    cfg.cache_size  = mklfs_cfg->cache_size;
+    cfg.block_cycles = mklfs_cfg->block_cycles;
     cfg.block_count = mklfs_cfg->fs_size / cfg.block_size;
-    cfg.lookahead_size   = cfg.block_count;
+    if (32 * ((cfg.block_count + 31) / 32) > LFS_LOOKAHEAD_MAX)
+        cfg.lookahead_size = LFS_LOOKAHEAD_MAX;
+
     cfg.context     = NULL;
 
 	data = calloc(1, mklfs_cfg->fs_size);

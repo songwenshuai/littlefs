@@ -19,19 +19,26 @@ extern "C"
 typedef struct mklfs_cfg {
     char *src;        // Source directory <pack-dir>
     char *dst;        // Destination image <image-file-path>
-    int block_size;   // Block size <block-size>
-    int prog_size;    // Prog size <prog-size>
-    int read_size;    // Read size <read-size>
     int fs_size;      // File system size <filesystem-size>
+    lfs_size_t block_size;   // Block size <block-size>
+    lfs_size_t prog_size;    // Prog size <prog-size>
+    lfs_size_t read_size;    // Read size <read-size>
+    lfs_size_t cache_size;
+    int32_t block_cycles;
 } mklfs_cfg_t;
 
 typedef struct dumplfs_cfg {
     char *dstdir;   // Destination directory <output-dir>
     char *src;      // Source image <image-file-path>
-    int block_size; // Block size <block-size>
-    int read_size;  // Read size <read-size>
-    int prog_size;  // Prog size <prog-size>
+    lfs_size_t block_size; // Block size <block-size>
+    lfs_size_t read_size;  // Read size <read-size>
+    lfs_size_t prog_size;  // Prog size <prog-size>
+    lfs_size_t cache_size;
+    int32_t block_cycles;
 } dumplfs_cfg_t;
+
+int mklfs(mklfs_cfg_t *mklfs_cfg);
+int dumplfs(dumplfs_cfg_t *dumplfs_cfg);
 
 #ifdef __cplusplus
 } /* extern "C" */
