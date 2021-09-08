@@ -12,11 +12,7 @@
 #include "dirent.h"
 #endif
 
-#include <ctype.h>
-#include <string.h>
 #include <errno.h>
-#include <limits.h>
-#include <sys/types.h>
 
 #include <stdio.h>  /* needed for vsnprintf    */
 #include <stdlib.h> /* needed for malloc, free */
