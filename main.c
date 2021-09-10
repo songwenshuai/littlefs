@@ -2,7 +2,7 @@
 #include "lfs.h"
 #include "littlefs_ram_port.h"
 
-#if 1
+#if 0
 
 /*********************************************************************
 *
@@ -24,8 +24,9 @@ int main(int argc, char* argv[], char* envp[]) {
 
   return (0);
 }
+#endif
 
-#else
+#if 0
 static dumplfs_cfg_t dumplfs_cfg;
 
 /*********************************************************************
