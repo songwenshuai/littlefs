@@ -3,13 +3,13 @@
 #include "littlefs_ram_port.h"
 
 #if 1
-static mklfs_cfg_t mklfs_cfg;
 
 /*********************************************************************
 *
 *       main()
 */
 int main(int argc, char* argv[], char* envp[]) {
+  static mklfs_cfg_t mklfs_cfg;
   mklfs_cfg.src             = "./";
   mklfs_cfg.dst             = "./mklfs.img";
   mklfs_cfg.block_size      = _BLOCK_SIZE_;
@@ -33,6 +33,7 @@ static dumplfs_cfg_t dumplfs_cfg;
 *       main()
 */
 int main(int argc, char* argv[], char* envp[]) {
+  static mklfs_cfg_t mklfs_cfg;
   dumplfs_cfg.src             = "./mklfs.img";
   dumplfs_cfg.dstdir          = "./dump/";
   dumplfs_cfg.block_size      = _BLOCK_SIZE_;
@@ -44,6 +45,17 @@ int main(int argc, char* argv[], char* envp[]) {
 
   dumplfs(&dumplfs_cfg);
 
+  return (0);
+}
+#endif
+
+#if 0
+/*********************************************************************
+*
+*       main()
+*/
+int main(int argc, char* argv[], char* envp[]) {
+  boot_count_test();
   return (0);
 }
 #endif

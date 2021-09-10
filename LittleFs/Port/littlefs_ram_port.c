@@ -61,22 +61,51 @@ int asprintf(char **strp, const char *format, ...)
 }
 #endif
 
-static struct lfs_config cfg;
-static lfs_t lfs;
-static uint8_t *data;
-
 static int lfs_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, void *buffer, lfs_size_t size) {
-    memcpy(buffer, data + (block * c->block_size) + off, size);
+    // Check if read is valid
+    LFS_ASSERT(off  % c->read_size == 0);
+    LFS_ASSERT(size % c->read_size == 0);
+    LFS_ASSERT(block < c->block_count);
+    LFS_ASSERT(c != NULL);
+    LFS_ASSERT(c->context != NULL);
+
+    LFS_TRACE("lfs_read(%p, 0x%"PRIx32", %"PRIu32", %p, %"PRIu32")",
+            (void*)c, block, off, buffer, size);
+
+    uint8_t *addr = NULL;
+    addr = (uint8_t *)c->context;
+    memcpy(buffer, addr + (block * c->block_size) + off, size);
     return 0;
 }
 
 static int lfs_prog(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, const void *buffer, lfs_size_t size) {
-	memcpy(data + (block * c->block_size) + off, buffer, size);
+    // Check if write is valid
+    LFS_ASSERT(off  % c->prog_size == 0);
+    LFS_ASSERT(size % c->prog_size == 0);
+    LFS_ASSERT(block < c->block_count);
+    LFS_ASSERT(c != NULL);
+    LFS_ASSERT(c->context != NULL);
+
+    LFS_TRACE("lfs_prog(%p, 0x%"PRIx32", %"PRIu32", %p, %"PRIu32")",
+            (void*)c, block, off, buffer, size);
+
+    uint8_t *addr = NULL;
+    addr = (uint8_t *)c->context;
+	memcpy(addr + (block * c->block_size) + off, buffer, size);
     return 0;
 }
 
 static int lfs_erase(const struct lfs_config *c, lfs_block_t block) {
-    memset(data + (block * c->block_size), 0, c->block_size);
+    // Check if erase is valid
+    LFS_ASSERT(block < c->block_count);
+    LFS_ASSERT(c != NULL);
+    LFS_ASSERT(c->context != NULL);
+
+    LFS_TRACE("lfs_erase(%p, 0x%"PRIx32")", (void*)c, block);
+
+    uint8_t *addr = NULL;
+    addr = (uint8_t *)c->context;
+    memset(addr + (block * c->block_size), 0, c->block_size);
     return 0;
 }
 
@@ -84,7 +113,7 @@ static int lfs_sync(const struct lfs_config *c) {
 	return 0;
 }
 
-static void create_dir(char *src) {
+static void create_dir(lfs_t *lfs, char *src) {
     char *path;
     int ret;
 
@@ -92,14 +121,14 @@ static void create_dir(char *src) {
     if (path) {
         fprintf(stdout, "%s\r\n", path);
 
-		if ((ret = lfs_mkdir(&lfs, path)) < 0) {
+		if ((ret = lfs_mkdir(lfs, path)) < 0) {
 			fprintf(stderr,"can't create directory %s: error=%d\r\n", path, ret);
 			exit(1);
 		}
 	}
 }
 
-static void create_file(char *src) {
+static void create_file(lfs_t *lfs, char *src) {
     char *path;
     int ret;
 
@@ -116,14 +145,14 @@ static void create_file(char *src) {
 
         // Open destination file
         lfs_file_t dstf;
-        if ((ret = lfs_file_open(&lfs, &dstf, path, LFS_O_WRONLY | LFS_O_CREAT)) < 0) {
+        if ((ret = lfs_file_open(lfs, &dstf, path, LFS_O_WRONLY | LFS_O_CREAT)) < 0) {
             fprintf(stderr,"can't open destination file %s: error=%d\r\n", path, ret);
             exit(1);
         }
 
 		char c = fgetc(srcf);
 		while (!feof(srcf)) {
-			ret = lfs_file_write(&lfs, &dstf, &c, 1);
+			ret = lfs_file_write(lfs, &dstf, &c, 1);
 			if (ret < 0) {
 				fprintf(stderr,"can't write to destination file %s: error=%d\r\n", path, ret);
 				exit(1);
@@ -132,7 +161,7 @@ static void create_file(char *src) {
 		}
 
         // Close destination file
-		ret = lfs_file_close(&lfs, &dstf);
+		ret = lfs_file_close(lfs, &dstf);
 		if (ret < 0) {
 			fprintf(stderr,"can't close destination file %s: error=%d\r\n", path, ret);
 			exit(1);
@@ -143,7 +172,7 @@ static void create_file(char *src) {
     }
 }
 
-static void compact(char *src) {
+static void compact(lfs_t *lfs, char *src) {
     DIR *dir;
     struct dirent *ent;
     char curr_path[PATH_MAX];
@@ -159,10 +188,10 @@ static void compact(char *src) {
                 strcat(curr_path, ent->d_name);
 
                 if (ent->d_type == DT_DIR) {
-                    create_dir(curr_path);
-                    compact(curr_path);
+                    create_dir(lfs, curr_path);
+                    compact(lfs, curr_path);
                 } else if (ent->d_type == DT_REG) {
-                    create_file(curr_path);
+                    create_file(lfs, curr_path);
                 }
             }
         }
@@ -171,14 +200,14 @@ static void compact(char *src) {
     }
 }
 
-static int dump_file(const char *srcpath, const char  *dstpath) {
+static int dump_file(lfs_t *lfs, const char *srcpath, const char  *dstpath) {
 	int r;
 	lfs_file_t lfs_f;
 	FILE *F = NULL;
 	uint8_t buffer[4096];
 
 
-	r = lfs_file_open(&lfs, &lfs_f, srcpath, LFS_O_RDONLY);
+	r = lfs_file_open(lfs, &lfs_f, srcpath, LFS_O_RDONLY);
 	if (r < 0) {
 		fprintf(stderr, "lfs: fail to open %s\n", srcpath);
 		return -1;
@@ -193,7 +222,7 @@ static int dump_file(const char *srcpath, const char  *dstpath) {
 	}
 
 	do {
-		r = lfs_file_read(&lfs, &lfs_f, buffer, sizeof(buffer));
+		r = lfs_file_read(lfs, &lfs_f, buffer, sizeof(buffer));
 		if (r < 0) {
 			fprintf(stderr, "lfs: read failure: %s\n", srcpath);
 			break;
@@ -209,25 +238,25 @@ static int dump_file(const char *srcpath, const char  *dstpath) {
 
 dump_file_err:
 	if (F) fclose(F);
-	lfs_file_close(&lfs, &lfs_f);
+	lfs_file_close(lfs, &lfs_f);
 	return r;
 }
 
 
-static int dump_dir(const char *srcpath, const char  *dstpath) {
+static int dump_dir(lfs_t *lfs, const char *srcpath, const char  *dstpath) {
 	lfs_dir_t srcdir;
 	struct lfs_info dir_info;
 	int r;
 	int status = 0;
 
-	r = lfs_dir_open(&lfs, &srcdir, srcpath);
+	r = lfs_dir_open(lfs, &srcdir, srcpath);
 	if (r < 0) {
 		fprintf(stderr, "lfs: Failed to open dir %s\n", srcpath);
 		return -1;
 	}
 
 	do {
-		r = lfs_dir_read(&lfs, &srcdir, &dir_info);
+		r = lfs_dir_read(lfs, &srcdir, &dir_info);
 		if (r <= 0) break;
 		if (!strcmp(dir_info.name, ".") || !strcmp(dir_info.name, "..")) {
 			continue;
@@ -256,10 +285,10 @@ static int dump_dir(const char *srcpath, const char  *dstpath) {
 		switch (dir_info.type) {
 		case LFS_TYPE_DIR:
 			mkdir(new_dstpath, 0777 );
-			status = dump_dir(new_srcpath, new_dstpath);
+			status = dump_dir(lfs, new_srcpath, new_dstpath);
 		    break;
 		case LFS_TYPE_REG:
-			status = dump_file(new_srcpath, new_dstpath);
+			status = dump_file(lfs, new_srcpath, new_dstpath);
 			break;
 		}
 
@@ -270,12 +299,14 @@ alloc_err:
 	} while (!status);
 
 
-	lfs_dir_close(&lfs, &srcdir);
+	lfs_dir_close(lfs, &srcdir);
 	return status;
 }
 
 
 int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
+	static struct lfs_config cfg;
+	static lfs_t lfs;
     int c;              // Current option
     int fs_size = 0;    // File system size
     int err;
@@ -291,9 +322,6 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
     cfg.prog  = lfs_prog;
     cfg.erase = lfs_erase;
     cfg.sync  = lfs_sync;
-
-    
-    cfg.context     = NULL;
 
     /* read the data from dumplfs_cfg->src */
     FILE *img = fopen(dumplfs_cfg->src, "rb");
@@ -324,13 +352,13 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
     if (32 * ((cfg.block_count + 31) / 32) > dumplfs_cfg->lookahead_size)
         cfg.lookahead_size = dumplfs_cfg->lookahead_size;
 
-	data = malloc(fs_size);
-	if (!data) {
+	cfg.context = calloc(1, fs_size);
+	if (!cfg.context) {
 		fprintf(stderr, "no memory for mount\r\n");
 		return -1;
 	}
 
-	if (fread(data, fs_size, 1, img) != 1) {
+	if (fread(cfg.context, fs_size, 1, img) != 1) {
 		fprintf(stderr, "Fail to read the image file\r\n");
 		return -1;
 	}
@@ -342,11 +370,13 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
 		return -1;
 	}
 
-	err = dump_dir("", dumplfs_cfg->dstdir);
+	err = dump_dir(&lfs, "", dumplfs_cfg->dstdir);
 	return err;
 }
 
 int mklfs(mklfs_cfg_t *mklfs_cfg) {
+	static struct lfs_config cfg;
+	static lfs_t lfs;
     int err;
 
     if ((mklfs_cfg->src == NULL) || (mklfs_cfg->dst == NULL) || (mklfs_cfg->block_size <= 0) || (mklfs_cfg->prog_size <= 0) ||
@@ -370,10 +400,8 @@ int mklfs(mklfs_cfg_t *mklfs_cfg) {
     if (32 * ((cfg.block_count + 31) / 32) > mklfs_cfg->lookahead_size)
         cfg.lookahead_size = mklfs_cfg->lookahead_size;
 
-    cfg.context     = NULL;
-
-	data = calloc(1, mklfs_cfg->fs_size);
-	if (!data) {
+	cfg.context = calloc(1, mklfs_cfg->fs_size);
+	if (!cfg.context) {
 		fprintf(stderr, "no memory for mount\r\n");
 		return -1;
 	}
@@ -390,7 +418,7 @@ int mklfs(mklfs_cfg_t *mklfs_cfg) {
 		return -1;
 	}
 
-	compact(mklfs_cfg->src);
+	compact(&lfs, mklfs_cfg->src);
 
 	FILE *img = fopen(mklfs_cfg->dst, "wb+");
 
@@ -399,9 +427,66 @@ int mklfs(mklfs_cfg_t *mklfs_cfg) {
 		return -1;
 	}
 
-	fwrite(data, 1, mklfs_cfg->fs_size, img);
+	fwrite(cfg.context, 1, mklfs_cfg->fs_size, img);
 
 	fclose(img);
 
 	return 0;
+}
+
+// entry point
+void boot_count_test(void) {
+	// configuration of the filesystem is provided by this struct
+	static struct lfs_config cfg;
+	// variables used by the filesystem
+	static lfs_t lfs;
+	lfs_file_t file;
+
+    // block device operations
+    cfg.read  = lfs_read;
+    cfg.prog  = lfs_prog;
+    cfg.erase = lfs_erase;
+    cfg.sync  = lfs_sync;
+
+    // block device configuration
+    cfg.read_size = 256;
+    cfg.prog_size = 256;
+    cfg.block_size = 4096;
+    cfg.block_count = 128;
+    cfg.cache_size = 256;
+    cfg.lookahead_size = 128;
+    cfg.block_cycles = -1;
+
+    cfg.context = calloc(1, cfg.block_size * cfg.block_count);
+	if (!cfg.context) {
+		fprintf(stderr, "no memory for mount\r\n");
+	}
+    // mount the filesystem
+    int err = lfs_mount(&lfs, &cfg);
+
+    // reformat if we can't mount the filesystem
+    // this should only happen on the first boot
+    if (err) {
+        lfs_format(&lfs, &cfg);
+        lfs_mount(&lfs, &cfg);
+    }
+
+    // read current count
+    uint32_t boot_count = 0;
+    lfs_file_open(&lfs, &file, "boot_count", LFS_O_RDWR | LFS_O_CREAT);
+    lfs_file_read(&lfs, &file, &boot_count, sizeof(boot_count));
+
+    // update boot count
+    boot_count += 1;
+    lfs_file_rewind(&lfs, &file);
+    lfs_file_write(&lfs, &file, &boot_count, sizeof(boot_count));
+
+    // remember the storage is not updated until the file is closed successfully
+    lfs_file_close(&lfs, &file);
+
+    // release any resources we were using
+    lfs_unmount(&lfs);
+
+    // print the boot count
+    printf("boot_count: %d\n", boot_count);
 }

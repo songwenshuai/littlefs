@@ -37,6 +37,7 @@ typedef struct dumplfs_cfg {
 
 int mklfs(mklfs_cfg_t *mklfs_cfg);
 int dumplfs(dumplfs_cfg_t *dumplfs_cfg);
+void boot_count_test(void);
 
 #ifdef __cplusplus
 } /* extern "C" */
