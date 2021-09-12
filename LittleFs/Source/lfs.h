@@ -10,12 +10,40 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "lfs_util.h"
+// Users can override lfs_util.h with their own configuration by defining
+// LFS_CONFIG as a header file to include (-DLFS_CONFIG=lfs_config.h).
+//
+// If LFS_CONFIG is used, none of the default utils will be emitted and must be
+// provided by the config file. To start, I would suggest copying lfs_util.h
+// and modifying as needed.
+#ifdef LFS_CONFIG
+#define LFS_STRINGIZE(x) LFS_STRINGIZE2(x)
+#define LFS_STRINGIZE2(x) #x
+#include LFS_STRINGIZE(LFS_CONFIG)
+#else
+
+// System includes
+#include <string.h>
+#include <inttypes.h>
+
+#ifndef LFS_NO_MALLOC
+#include <stdlib.h>
+#endif
+#ifndef LFS_NO_ASSERT
+#include <assert.h>
+#endif
+#if !defined(LFS_NO_DEBUG) || \
+        !defined(LFS_NO_WARN) || \
+        !defined(LFS_NO_ERROR) || \
+        defined(LFS_YES_TRACE)
+#include <stdio.h>
+#endif
+#endif
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
 
 /// Version info ///
 
@@ -33,8 +61,90 @@ extern "C"
 #define LFS_DISK_VERSION_MAJOR (0xffff & (LFS_DISK_VERSION >> 16))
 #define LFS_DISK_VERSION_MINOR (0xffff & (LFS_DISK_VERSION >>  0))
 
+// Macros, may be replaced by system specific wrappers. Arguments to these
+// macros must not have side-effects as the macros can be removed for a smaller
+// code footprint
+
+// Logging functions
+#ifndef LFS_TRACE
+#ifdef LFS_YES_TRACE
+#define LFS_TRACE_(fmt, ...) \
+    printf("%s:%d:trace: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
+#define LFS_TRACE(...) LFS_TRACE_(__VA_ARGS__, "")
+#else
+#define LFS_TRACE(...)
+#endif
+#endif
+
+#ifndef LFS_DEBUG
+#ifndef LFS_NO_DEBUG
+#define LFS_DEBUG_(fmt, ...) \
+    printf("%s:%d:debug: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
+#define LFS_DEBUG(...) LFS_DEBUG_(__VA_ARGS__, "")
+#else
+#define LFS_DEBUG(...)
+#endif
+#endif
+
+#ifndef LFS_WARN
+#ifndef LFS_NO_WARN
+#define LFS_WARN_(fmt, ...) \
+    printf("%s:%d:warn: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
+#define LFS_WARN(...) LFS_WARN_(__VA_ARGS__, "")
+#else
+#define LFS_WARN(...)
+#endif
+#endif
+
+#ifndef LFS_ERROR
+#ifndef LFS_NO_ERROR
+#define LFS_ERROR_(fmt, ...) \
+    printf("%s:%d:error: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
+#define LFS_ERROR(...) LFS_ERROR_(__VA_ARGS__, "")
+#else
+#define LFS_ERROR(...)
+#endif
+#endif
+
+// Runtime assertions
+#ifndef LFS_ASSERT
+#ifndef LFS_NO_ASSERT
+#define LFS_ASSERT(test) assert(test)
+#else
+#define LFS_ASSERT(test)
+#endif
+#endif
+
+/// Public API wrappers ///
+
+// Here we can add tracing/thread safety easily
+
+// Thread-safe wrappers if enabled
+#ifdef LFS_THREADSAFE
+#define LFS_LOCK(cfg)   cfg->lock(cfg)
+#define LFS_UNLOCK(cfg) cfg->unlock(cfg)
+#else
+#define LFS_LOCK(cfg)   ((void)cfg, 0)
+#define LFS_UNLOCK(cfg) ((void)cfg)
+#endif
 
 /// Definitions ///
+#define LFS_MKATTRS(...) \
+    (struct lfs_mattr[]){__VA_ARGS__}, \
+    sizeof((struct lfs_mattr[]){__VA_ARGS__}) / sizeof(struct lfs_mattr)
+
+#define LFS_MKTAG(type, id, size) \
+    (((lfs_tag_t)(type) << 20) | ((lfs_tag_t)(id) << 10) | (lfs_tag_t)(size))
+
+#define LFS_MKTAG_IF(cond, type, id, size) \
+    ((cond) ? LFS_MKTAG(type, id, size) : LFS_MKTAG(LFS_FROM_NOOP, 0, 0))
+
+#define LFS_MKTAG_IF_ELSE(cond, type1, id1, size1, type2, id2, size2) \
+    ((cond) ? LFS_MKTAG(type1, id1, size1) : LFS_MKTAG(type2, id2, size2))
+
+
+#define LFS_BLOCK_NULL ((lfs_block_t)-1)
+#define LFS_BLOCK_INLINE ((lfs_block_t)-2)
 
 // Type definitions
 typedef uint32_t lfs_size_t;
@@ -44,6 +154,10 @@ typedef int32_t  lfs_ssize_t;
 typedef int32_t  lfs_soff_t;
 
 typedef uint32_t lfs_block_t;
+
+// operations on 32-bit entry tags
+typedef uint32_t lfs_tag_t;
+typedef int32_t lfs_stag_t;
 
 // Maximum name size in bytes, may be redefined to reduce the size of the
 // info struct. Limited to <= 1022. Stored in superblock and must be
@@ -152,6 +266,12 @@ enum lfs_whence_flags {
     LFS_SEEK_END = 2,   // Seek relative to the end of the file
 };
 
+
+enum {
+    LFS_CMP_EQ = 0,
+    LFS_CMP_LT = 1,
+    LFS_CMP_GT = 2,
+};
 
 // Configuration provided during initialization of the littlefs
 struct lfs_config {
@@ -415,6 +535,88 @@ typedef struct lfs {
 
 } lfs_t;
 
+#ifndef LFS_READONLY
+struct lfs_fs_parent_match {
+    lfs_t *lfs;
+    const lfs_block_t pair[2];
+};
+#endif
+
+#ifndef LFS_READONLY
+struct lfs_dir_commit_commit {
+    lfs_t *lfs;
+    struct lfs_commit *commit;
+};
+#endif
+
+// commit logic
+struct lfs_commit {
+    lfs_block_t block;
+    lfs_off_t off;
+    lfs_tag_t ptag;
+    uint32_t crc;
+
+    lfs_off_t begin;
+    lfs_off_t end;
+};
+
+struct lfs_dir_find_match {
+    lfs_t *lfs;
+    const void *name;
+    lfs_size_t size;
+};
+
+// operations on attributes in attribute lists
+struct lfs_mattr {
+    lfs_tag_t tag;
+    const void *buffer;
+};
+
+struct lfs_diskoff {
+    lfs_block_t block;
+    lfs_off_t off;
+};
+
+/// Internal operations predeclared here ///
+#ifndef LFS_READONLY
+static int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
+        const struct lfs_mattr *attrs, int attrcount);
+static int lfs_dir_compact(lfs_t *lfs,
+        lfs_mdir_t *dir, const struct lfs_mattr *attrs, int attrcount,
+        lfs_mdir_t *source, uint16_t begin, uint16_t end);
+
+static lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
+        const void *buffer, lfs_size_t size);
+static int lfs_file_rawsync(lfs_t *lfs, lfs_file_t *file);
+static int lfs_file_outline(lfs_t *lfs, lfs_file_t *file);
+static int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+
+static int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans);
+static void lfs_fs_prepmove(lfs_t *lfs,
+        uint16_t id, const lfs_block_t pair[2]);
+static int lfs_fs_pred(lfs_t *lfs, const lfs_block_t dir[2],
+        lfs_mdir_t *pdir);
+static lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t dir[2],
+        lfs_mdir_t *parent);
+static int lfs_fs_relocate(lfs_t *lfs,
+        const lfs_block_t oldpair[2], lfs_block_t newpair[2]);
+static int lfs_fs_forceconsistency(lfs_t *lfs);
+#endif
+
+static int lfs_dir_rawrewind(lfs_t *lfs, lfs_dir_t *dir);
+
+static lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
+        void *buffer, lfs_size_t size);
+static int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file);
+static lfs_soff_t lfs_file_rawsize(lfs_t *lfs, lfs_file_t *file);
+
+static lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs);
+static int lfs_fs_rawtraverse(lfs_t *lfs,
+        int (*cb)(void *data, lfs_block_t block), void *data,
+        bool includeorphans);
+
+static int lfs_deinit(lfs_t *lfs);
+static int lfs_rawunmount(lfs_t *lfs);
 
 /// Filesystem functions ///
 
@@ -667,6 +869,8 @@ lfs_ssize_t lfs_fs_size(lfs_t *lfs);
 // Returns a negative error code on failure.
 int lfs_fs_traverse(lfs_t *lfs, int (*cb)(void*, lfs_block_t), void *data);
 
+// Calculate CRC-32 with polynomial = 0x04c11db7
+uint32_t lfs_crc(uint32_t crc, const void *buffer, size_t size);
 
 #ifdef __cplusplus
 } /* extern "C" */

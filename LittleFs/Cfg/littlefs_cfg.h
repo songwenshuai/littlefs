@@ -7,14 +7,6 @@
 #ifndef LFS_CFG_H
 #define LFS_CFG_H
 
-#define _PROG_SIZE_     256
-#define _READ_SIZE_     256
-#define _CACHE_SIZE     _PROG_SIZE_
-#define _BLOCK_SIZE_    4096
-
-#define _LOOKAHEAD_MAX  128
-#define _FS_SIZE_       16777216    // 16 MB
-#define _BLOCK_CYCLES   (-1)
 
 #ifdef __cplusplus
 extern "C"
