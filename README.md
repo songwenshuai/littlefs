@@ -1,5 +1,5 @@
-# LiTian-LittleFS
-LiTian LittleFS.
+# LittleFS Teaching Version
+LittleFS Teaching Version.
 
 # GITHUB 地址
 https://github.com/littlefs-project
