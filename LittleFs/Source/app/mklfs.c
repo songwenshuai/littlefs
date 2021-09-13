@@ -7,6 +7,10 @@
 #if defined(__GNUC__)
 #define _GNU_SOURCE
 #endif
+#if defined(_MSC_VER)
+#pragma warning(disable:5105)
+#endif
+
 #include "lfs.h"
 #include "app.h"
 
