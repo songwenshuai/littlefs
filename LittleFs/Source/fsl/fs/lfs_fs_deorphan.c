@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_fs_deorphan(lfs_t *lfs) {
+// static 
+int lfs_fs_deorphan(lfs_t *lfs) {
     if (!lfs_gstate_hasorphans(&lfs->gstate)) {
         return 0;
     }

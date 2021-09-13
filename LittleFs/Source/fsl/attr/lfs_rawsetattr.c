@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_rawsetattr(lfs_t *lfs, const char *path,
+// static 
+int lfs_rawsetattr(lfs_t *lfs, const char *path,
         uint8_t type, const void *buffer, lfs_size_t size) {
     if (size > lfs->attr_max) {
         return LFS_ERR_NOSPC;

@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static void lfs_mlist_append(lfs_t *lfs, struct lfs_mlist *mlist) {
+// static 
+void lfs_mlist_append(lfs_t *lfs, struct lfs_mlist *mlist) {
     mlist->next = lfs->mlist;
     lfs->mlist = mlist;
 }

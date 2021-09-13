@@ -577,47 +577,6 @@ struct lfs_diskoff {
     lfs_off_t off;
 };
 
-/// Internal operations predeclared here ///
-#ifndef LFS_READONLY
-static int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
-        const struct lfs_mattr *attrs, int attrcount);
-static int lfs_dir_compact(lfs_t *lfs,
-        lfs_mdir_t *dir, const struct lfs_mattr *attrs, int attrcount,
-        lfs_mdir_t *source, uint16_t begin, uint16_t end);
-
-static lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
-        const void *buffer, lfs_size_t size);
-static int lfs_file_rawsync(lfs_t *lfs, lfs_file_t *file);
-static int lfs_file_outline(lfs_t *lfs, lfs_file_t *file);
-static int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
-
-static int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans);
-static void lfs_fs_prepmove(lfs_t *lfs,
-        uint16_t id, const lfs_block_t pair[2]);
-static int lfs_fs_pred(lfs_t *lfs, const lfs_block_t dir[2],
-        lfs_mdir_t *pdir);
-static lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t dir[2],
-        lfs_mdir_t *parent);
-static int lfs_fs_relocate(lfs_t *lfs,
-        const lfs_block_t oldpair[2], lfs_block_t newpair[2]);
-static int lfs_fs_forceconsistency(lfs_t *lfs);
-#endif
-
-static int lfs_dir_rawrewind(lfs_t *lfs, lfs_dir_t *dir);
-
-static lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
-        void *buffer, lfs_size_t size);
-static int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file);
-static lfs_soff_t lfs_file_rawsize(lfs_t *lfs, lfs_file_t *file);
-
-static lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs);
-static int lfs_fs_rawtraverse(lfs_t *lfs,
-        int (*cb)(void *data, lfs_block_t block), void *data,
-        bool includeorphans);
-
-static int lfs_deinit(lfs_t *lfs);
-static int lfs_rawunmount(lfs_t *lfs);
-
 /// Filesystem functions ///
 
 #ifndef LFS_READONLY

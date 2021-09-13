@@ -11,7 +11,8 @@
 // expensive basic C implementation for debugging purposes
 
 // Convert between 32-bit big-endian and native order
-static inline uint32_t lfs_frombe32(uint32_t a) {
+// static inline 
+uint32_t lfs_frombe32(uint32_t a) {
 #if !defined(LFS_NO_INTRINSICS) && ( \
     (defined(  BYTE_ORDER  ) && defined(  ORDER_LITTLE_ENDIAN  ) &&   BYTE_ORDER   ==   ORDER_LITTLE_ENDIAN  ) || \
     (defined(__BYTE_ORDER  ) && defined(__ORDER_LITTLE_ENDIAN  ) && __BYTE_ORDER   == __ORDER_LITTLE_ENDIAN  ) || \

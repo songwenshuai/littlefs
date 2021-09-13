@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_fs_forceconsistency(lfs_t *lfs) {
+// static 
+int lfs_fs_forceconsistency(lfs_t *lfs) {
     int err = lfs_fs_demove(lfs);
     if (err) {
         return err;

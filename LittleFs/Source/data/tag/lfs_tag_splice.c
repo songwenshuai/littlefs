@@ -10,6 +10,7 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline int8_t lfs_tag_splice(lfs_tag_t tag) {
+// static inline 
+int8_t lfs_tag_splice(lfs_tag_t tag) {
     return (int8_t)lfs_tag_chunk(tag);
 }

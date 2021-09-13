@@ -11,6 +11,7 @@
 // expensive basic C implementation for debugging purposes
 
 // Align to nearest multiple of a size
-static inline uint32_t lfs_aligndown(uint32_t a, uint32_t alignment) {
+// static inline 
+uint32_t lfs_aligndown(uint32_t a, uint32_t alignment) {
     return a - (a % alignment);
 }

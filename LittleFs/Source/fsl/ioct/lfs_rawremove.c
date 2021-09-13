@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_rawremove(lfs_t *lfs, const char *path) {
+// static 
+int lfs_rawremove(lfs_t *lfs, const char *path) {
     // deorphan if we haven't yet, needed at most once after poweron
     int err = lfs_fs_forceconsistency(lfs);
     if (err) {

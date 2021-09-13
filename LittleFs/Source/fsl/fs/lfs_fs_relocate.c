@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_fs_relocate(lfs_t *lfs,
+// static 
+int lfs_fs_relocate(lfs_t *lfs,
         const lfs_block_t oldpair[2], lfs_block_t newpair[2]) {
     // update internal root
     if (lfs_pair_cmp(oldpair, lfs->root) == 0) {

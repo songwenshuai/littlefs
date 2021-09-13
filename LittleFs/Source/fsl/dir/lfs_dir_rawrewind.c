@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_rawrewind(lfs_t *lfs, lfs_dir_t *dir) {
+// static 
+int lfs_dir_rawrewind(lfs_t *lfs, lfs_dir_t *dir) {
     // reload the head dir
     int err = lfs_dir_fetch(lfs, &dir->m, dir->head);
     if (err) {

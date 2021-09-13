@@ -6,8 +6,14 @@
  */
 #include "lfs.h"
 
+int lfs_bd_read(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        void *buffer, lfs_size_t size);
+
 #ifndef LFS_READONLY
-static int lfs_dir_traverse(lfs_t *lfs,
+// static 
+int lfs_dir_traverse(lfs_t *lfs,
         const lfs_mdir_t *dir, lfs_off_t off, lfs_tag_t ptag,
         const struct lfs_mattr *attrs, int attrcount,
         lfs_tag_t tmask, lfs_tag_t ttag,

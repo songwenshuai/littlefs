@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static lfs_soff_t lfs_file_rawseek(lfs_t *lfs, lfs_file_t *file,
+// static 
+lfs_soff_t lfs_file_rawseek(lfs_t *lfs, lfs_file_t *file,
         lfs_soff_t off, int whence) {
     // find new pos
     lfs_off_t npos = file->pos;

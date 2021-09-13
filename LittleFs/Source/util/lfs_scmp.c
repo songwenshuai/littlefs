@@ -9,6 +9,7 @@
 
 // Find the sequence comparison of a and b, this is the distance
 // between a and b ignoring overflow
-static inline int lfs_scmp(uint32_t a, uint32_t b) {
+// static inline 
+int lfs_scmp(uint32_t a, uint32_t b) {
     return (int)(unsigned)(a - b);
 }

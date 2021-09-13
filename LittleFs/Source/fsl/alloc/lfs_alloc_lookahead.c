@@ -8,7 +8,8 @@
 
 /// Block allocator ///
 #ifndef LFS_READONLY
-static int lfs_alloc_lookahead(void *p, lfs_block_t block) {
+// static 
+int lfs_alloc_lookahead(void *p, lfs_block_t block) {
     lfs_t *lfs = (lfs_t*)p;
     lfs_block_t off = ((block - lfs->free.off)
             + lfs->cfg->block_count) % lfs->cfg->block_count;

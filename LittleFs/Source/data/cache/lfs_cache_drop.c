@@ -11,7 +11,8 @@
 // expensive basic C implementation for debugging purposes
 
 /// Caching block device operations ///
-static inline void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache) {
+// static inline 
+void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache) {
     // do not zero, cheaper if cache is readonly or only going to be
     // written with identical data (during relocates)
     (void)lfs;

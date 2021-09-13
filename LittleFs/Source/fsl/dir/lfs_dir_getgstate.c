@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_getgstate(lfs_t *lfs, const lfs_mdir_t *dir,
+// static 
+int lfs_dir_getgstate(lfs_t *lfs, const lfs_mdir_t *dir,
         lfs_gstate_t *gstate) {
     lfs_gstate_t temp;
     lfs_stag_t res = lfs_dir_get(lfs, dir, LFS_MKTAG(0x7ff, 0, 0),

@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs) {
+// static 
+lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs) {
     lfs_size_t size = 0;
     int err = lfs_fs_rawtraverse(lfs, lfs_fs_size_count, &size, false);
     if (err) {

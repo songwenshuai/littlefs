@@ -8,7 +8,8 @@
 
 // drop the lookahead buffer, this is done during mounting and failed
 // traversals in order to avoid invalid lookahead state
-static void lfs_alloc_drop(lfs_t *lfs) {
+// static 
+void lfs_alloc_drop(lfs_t *lfs) {
     lfs->free.size = 0;
     lfs->free.i = 0;
     lfs_alloc_ack(lfs);

@@ -6,8 +6,14 @@
  */
 #include "lfs.h"
 
+int lfs_bd_read(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        void *buffer, lfs_size_t size);
+
 /// Metadata pair and directory operations ///
-static lfs_stag_t lfs_dir_getslice(lfs_t *lfs, const lfs_mdir_t *dir,
+// static 
+lfs_stag_t lfs_dir_getslice(lfs_t *lfs, const lfs_mdir_t *dir,
         lfs_tag_t gmask, lfs_tag_t gtag,
         lfs_off_t goff, void *gbuffer, lfs_size_t gsize) {
     lfs_off_t off = dir->off;

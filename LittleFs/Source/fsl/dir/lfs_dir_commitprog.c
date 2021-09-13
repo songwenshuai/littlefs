@@ -6,8 +6,14 @@
  */
 #include "lfs.h"
 
+int lfs_bd_prog(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate,
+        lfs_block_t block, lfs_off_t off,
+        const void *buffer, lfs_size_t size);
+
 #ifndef LFS_READONLY
-static int lfs_dir_commitprog(lfs_t *lfs, struct lfs_commit *commit,
+// static 
+int lfs_dir_commitprog(lfs_t *lfs, struct lfs_commit *commit,
         const void *buffer, lfs_size_t size) {
     int err = lfs_bd_prog(lfs,
             &lfs->pcache, &lfs->rcache, false,

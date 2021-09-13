@@ -11,7 +11,8 @@
 // expensive basic C implementation for debugging purposes
 
 // Count the number of binary ones in a
-static inline uint32_t lfs_popc(uint32_t a) {
+// static inline 
+uint32_t lfs_popc(uint32_t a) {
 #if !defined(LFS_NO_INTRINSICS) && (defined(__GNUC__) || defined(__CC_ARM))
     return __builtin_popcount(a);
 #else

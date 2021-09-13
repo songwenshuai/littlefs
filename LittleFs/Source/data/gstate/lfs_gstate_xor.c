@@ -11,7 +11,8 @@
 // expensive basic C implementation for debugging purposes
 
 // operations on global state
-static inline void lfs_gstate_xor(lfs_gstate_t *a, const lfs_gstate_t *b) {
+// static inline 
+void lfs_gstate_xor(lfs_gstate_t *a, const lfs_gstate_t *b) {
     for (int i = 0; i < 3; i++) {
         ((uint32_t*)a)[i] ^= ((const uint32_t*)b)[i];
     }

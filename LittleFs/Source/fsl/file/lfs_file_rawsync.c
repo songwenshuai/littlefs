@@ -6,8 +6,11 @@
  */
 #include "lfs.h"
 
+void lfs_ctz_tole32(struct lfs_ctz *ctz);
+
 #ifndef LFS_READONLY
-static int lfs_file_rawsync(lfs_t *lfs, lfs_file_t *file) {
+// static 
+int lfs_file_rawsync(lfs_t *lfs, lfs_file_t *file) {
     if (file->flags & LFS_F_ERRED) {
         // it's not safe to do anything if our file errored
         return 0;

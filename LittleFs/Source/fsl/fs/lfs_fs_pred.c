@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_fs_pred(lfs_t *lfs,
+// static 
+int lfs_fs_pred(lfs_t *lfs,
         const lfs_block_t pair[2], lfs_mdir_t *pdir) {
     // iterate over all directory directory entries
     pdir->tail[0] = 0;

@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_dir_commit_size(void *p, lfs_tag_t tag, const void *buffer) {
+// static 
+int lfs_dir_commit_size(void *p, lfs_tag_t tag, const void *buffer) {
     lfs_size_t *size = p;
     (void)buffer;
 

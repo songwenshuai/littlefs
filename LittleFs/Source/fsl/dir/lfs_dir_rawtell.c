@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static lfs_soff_t lfs_dir_rawtell(lfs_t *lfs, lfs_dir_t *dir) {
+// static 
+lfs_soff_t lfs_dir_rawtell(lfs_t *lfs, lfs_dir_t *dir) {
     (void)lfs;
     return dir->pos;
 }

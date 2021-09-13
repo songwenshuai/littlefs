@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
-static int lfs_rawunmount(lfs_t *lfs) {
+// static 
+int lfs_rawunmount(lfs_t *lfs) {
     return lfs_deinit(lfs);
 }

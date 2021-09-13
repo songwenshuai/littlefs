@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_bd_read(lfs_t *lfs,
+// static 
+int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size) {

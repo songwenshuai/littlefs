@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_fs_size_count(void *p, lfs_block_t block) {
+// static 
+int lfs_fs_size_count(void *p, lfs_block_t block) {
     (void)block;
     lfs_size_t *size = p;
     *size += 1;

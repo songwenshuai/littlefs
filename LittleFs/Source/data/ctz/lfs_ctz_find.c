@@ -6,7 +6,15 @@
  */
 #include "lfs.h"
 
-static int lfs_ctz_find(lfs_t *lfs,
+int lfs_bd_read(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        void *buffer, lfs_size_t size);
+int lfs_ctz_index(lfs_t *lfs, lfs_off_t *off);
+uint32_t lfs_ctz(uint32_t a);
+
+// static 
+int lfs_ctz_find(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache,
         lfs_block_t head, lfs_size_t size,
         lfs_size_t pos, lfs_block_t *block, lfs_off_t *off) {

@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_rawopen(lfs_t *lfs, lfs_dir_t *dir, const char *path) {
+// static 
+int lfs_dir_rawopen(lfs_t *lfs, lfs_dir_t *dir, const char *path) {
     lfs_stag_t tag = lfs_dir_find(lfs, &dir->m, &path, NULL);
     if (tag < 0) {
         return tag;

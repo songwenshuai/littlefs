@@ -6,7 +6,13 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_find_match(void *data,
+int lfs_bd_cmp(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        const void *buffer, lfs_size_t size);
+
+// static 
+int lfs_dir_find_match(void *data,
         lfs_tag_t tag, const void *buffer) {
     struct lfs_dir_find_match *name = data;
     lfs_t *lfs = name->lfs;

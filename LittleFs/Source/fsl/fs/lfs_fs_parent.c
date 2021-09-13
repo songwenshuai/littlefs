@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t pair[2],
+// static 
+lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t pair[2],
         lfs_mdir_t *parent) {
     // use fetchmatch with callback to find pairs
     parent->tail[0] = 0;

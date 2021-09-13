@@ -6,8 +6,13 @@
  */
 #include "lfs.h"
 
+int lfs_bd_flush(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate);
+void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
+
 #ifndef LFS_READONLY
-static int lfs_file_flush(lfs_t *lfs, lfs_file_t *file) {
+// static 
+int lfs_file_flush(lfs_t *lfs, lfs_file_t *file) {
     if (file->flags & LFS_F_READING) {
         if (!(file->flags & LFS_F_INLINE)) {
             lfs_cache_drop(lfs, &file->cache);

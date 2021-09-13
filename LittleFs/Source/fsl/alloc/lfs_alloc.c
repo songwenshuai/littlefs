@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_alloc(lfs_t *lfs, lfs_block_t *block) {
+// static 
+int lfs_alloc(lfs_t *lfs, lfs_block_t *block) {
     while (true) {
         while (lfs->free.i != lfs->free.size) {
             lfs_block_t off = lfs->free.i;

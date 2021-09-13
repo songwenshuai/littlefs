@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_file_outline(lfs_t *lfs, lfs_file_t *file) {
+// static 
+int lfs_file_outline(lfs_t *lfs, lfs_file_t *file) {
     file->off = file->pos;
     lfs_alloc_ack(lfs);
     int err = lfs_file_relocate(lfs, file);

@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_rawread(lfs_t *lfs, lfs_dir_t *dir, struct lfs_info *info) {
+// static 
+int lfs_dir_rawread(lfs_t *lfs, lfs_dir_t *dir, struct lfs_info *info) {
     memset(info, 0, sizeof(*info));
 
     // special offset for '.' and '..'

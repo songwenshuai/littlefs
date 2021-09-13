@@ -10,6 +10,7 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline bool lfs_pair_isnull(const lfs_block_t pair[2]) {
+// static inline 
+bool lfs_pair_isnull(const lfs_block_t pair[2]) {
     return pair[0] == LFS_BLOCK_NULL || pair[1] == LFS_BLOCK_NULL;
 }

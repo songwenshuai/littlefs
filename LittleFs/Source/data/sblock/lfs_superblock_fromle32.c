@@ -10,7 +10,8 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline void lfs_superblock_fromle32(lfs_superblock_t *superblock) {
+// static inline 
+void lfs_superblock_fromle32(lfs_superblock_t *superblock) {
     superblock->version     = lfs_fromle32(superblock->version);
     superblock->block_size  = lfs_fromle32(superblock->block_size);
     superblock->block_count = lfs_fromle32(superblock->block_count);

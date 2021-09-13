@@ -6,7 +6,10 @@
  */
 #include "lfs.h"
 
-static int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file) {
+extern void lfs_free(void *p);
+
+// static 
+int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file) {
 #ifndef LFS_READONLY
     int err = lfs_file_rawsync(lfs, file);
 #else

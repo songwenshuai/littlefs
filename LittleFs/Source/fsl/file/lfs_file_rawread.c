@@ -6,7 +6,17 @@
  */
 #include "lfs.h"
 
-static lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
+int lfs_bd_read(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        void *buffer, lfs_size_t size);
+int lfs_ctz_find(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache,
+        lfs_block_t head, lfs_size_t size,
+        lfs_size_t pos, lfs_block_t *block, lfs_off_t *off);
+
+// static 
+lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
         void *buffer, lfs_size_t size) {
     LFS_ASSERT((file->flags & LFS_O_RDONLY) == LFS_O_RDONLY);
 

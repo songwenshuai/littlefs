@@ -12,7 +12,8 @@
 
 /// Small type-level utilities ///
 // operations on block pairs
-static inline void lfs_pair_swap(lfs_block_t pair[2]) {
+// static inline 
+void lfs_pair_swap(lfs_block_t pair[2]) {
     lfs_block_t t = pair[0];
     pair[0] = pair[1];
     pair[1] = t;

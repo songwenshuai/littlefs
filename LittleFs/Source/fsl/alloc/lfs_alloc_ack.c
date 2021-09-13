@@ -9,7 +9,8 @@
 // indicate allocated blocks have been committed into the filesystem, this
 // is to prevent blocks from being garbage collected in the middle of a
 // commit operation
-static void lfs_alloc_ack(lfs_t *lfs) {
+// static 
+void lfs_alloc_ack(lfs_t *lfs) {
     lfs->free.ack = lfs->cfg->block_count;
 }
 

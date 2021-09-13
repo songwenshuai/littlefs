@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 /// General fs operations ///
-static int lfs_rawstat(lfs_t *lfs, const char *path, struct lfs_info *info) {
+// static 
+int lfs_rawstat(lfs_t *lfs, const char *path, struct lfs_info *info) {
     lfs_mdir_t cwd;
     lfs_stag_t tag = lfs_dir_find(lfs, &cwd, &path, NULL);
     if (tag < 0) {

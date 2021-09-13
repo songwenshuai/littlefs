@@ -6,8 +6,13 @@
  */
 #include "lfs.h"
 
+extern void *lfs_malloc(size_t size);
+void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+void lfs_ctz_fromle32(struct lfs_ctz *ctz);
+
 /// Top level file operations ///
-static int lfs_file_rawopencfg(lfs_t *lfs, lfs_file_t *file,
+// static 
+int lfs_file_rawopencfg(lfs_t *lfs, lfs_file_t *file,
         const char *path, int flags,
         const struct lfs_file_config *cfg) {
 #ifndef LFS_READONLY

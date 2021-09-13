@@ -6,8 +6,23 @@
  */
 #include "lfs.h"
 
+int lfs_bd_prog(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate,
+        lfs_block_t block, lfs_off_t off,
+        const void *buffer, lfs_size_t size);
+void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+int lfs_ctz_extend(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache,
+        lfs_block_t head, lfs_size_t size,
+        lfs_block_t *block, lfs_off_t *off);
+int lfs_ctz_find(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache,
+        lfs_block_t head, lfs_size_t size,
+        lfs_size_t pos, lfs_block_t *block, lfs_off_t *off);
+
 #ifndef LFS_READONLY
-static lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
+// static 
+lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
         const void *buffer, lfs_size_t size) {
     LFS_ASSERT((file->flags & LFS_O_WRONLY) == LFS_O_WRONLY);
 

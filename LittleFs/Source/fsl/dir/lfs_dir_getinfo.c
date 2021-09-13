@@ -6,7 +6,10 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,
+void lfs_ctz_fromle32(struct lfs_ctz *ctz);
+
+// static 
+int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,
         uint16_t id, struct lfs_info *info) {
     if (id == 0x3ff) {
         // special case for root

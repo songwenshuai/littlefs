@@ -6,8 +6,15 @@
  */
 #include "lfs.h"
 
+void lfs_ctz_fromle32(struct lfs_ctz *ctz);
+int lfs_ctz_traverse(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache,
+        lfs_block_t head, lfs_size_t size,
+        int (*cb)(void*, lfs_block_t), void *data);
+
 /// Filesystem filesystem operations ///
-static int lfs_fs_rawtraverse(lfs_t *lfs,
+// static 
+int lfs_fs_rawtraverse(lfs_t *lfs,
         int (*cb)(void *data, lfs_block_t block), void *data,
         bool includeorphans) {
     // iterate over metadata pairs

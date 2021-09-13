@@ -12,7 +12,8 @@
 
 // Count the number of trailing binary zeros in a
 // lfs_ctz(0) may be undefined
-static inline uint32_t lfs_ctz(uint32_t a) {
+// static inline 
+uint32_t lfs_ctz(uint32_t a) {
 #if !defined(LFS_NO_INTRINSICS) && defined(__GNUC__)
     return __builtin_ctz(a);
 #else

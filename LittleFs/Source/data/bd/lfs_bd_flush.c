@@ -6,8 +6,16 @@
  */
 #include "lfs.h"
 
+int lfs_bd_cmp(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        const void *buffer, lfs_size_t size);
+void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
+void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+
 #ifndef LFS_READONLY
-static int lfs_bd_flush(lfs_t *lfs,
+// static 
+int lfs_bd_flush(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate) {
     if (pcache->block != LFS_BLOCK_NULL && pcache->block != LFS_BLOCK_INLINE) {
         LFS_ASSERT(pcache->block < lfs->cfg->block_count);

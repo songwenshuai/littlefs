@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static lfs_ssize_t lfs_rawgetattr(lfs_t *lfs, const char *path,
+// static 
+lfs_ssize_t lfs_rawgetattr(lfs_t *lfs, const char *path,
         uint8_t type, void *buffer, lfs_size_t size) {
     lfs_mdir_t cwd;
     lfs_stag_t tag = lfs_dir_find(lfs, &cwd, &path, NULL);

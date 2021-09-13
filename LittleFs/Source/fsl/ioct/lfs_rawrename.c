@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_rawrename(lfs_t *lfs, const char *oldpath, const char *newpath) {
+// static 
+int lfs_rawrename(lfs_t *lfs, const char *oldpath, const char *newpath) {
     // deorphan if we haven't yet, needed at most once after poweron
     int err = lfs_fs_forceconsistency(lfs);
     if (err) {

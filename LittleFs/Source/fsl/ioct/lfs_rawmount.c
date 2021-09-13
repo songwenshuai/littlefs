@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_rawmount(lfs_t *lfs, const struct lfs_config *cfg) {
+// static 
+int lfs_rawmount(lfs_t *lfs, const struct lfs_config *cfg) {
     int err = lfs_init(lfs, cfg);
     if (err) {
         return err;

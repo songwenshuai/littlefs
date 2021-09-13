@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_rawseek(lfs_t *lfs, lfs_dir_t *dir, lfs_off_t off) {
+// static 
+int lfs_dir_rawseek(lfs_t *lfs, lfs_dir_t *dir, lfs_off_t off) {
     // simply walk from head dir
     int err = lfs_dir_rawrewind(lfs, dir);
     if (err) {

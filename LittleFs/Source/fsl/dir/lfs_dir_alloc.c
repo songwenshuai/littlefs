@@ -6,8 +6,14 @@
  */
 #include "lfs.h"
 
+int lfs_bd_read(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        void *buffer, lfs_size_t size);
+
 #ifndef LFS_READONLY
-static int lfs_dir_alloc(lfs_t *lfs, lfs_mdir_t *dir) {
+// static 
+int lfs_dir_alloc(lfs_t *lfs, lfs_mdir_t *dir) {
     // allocate pair of dir blocks (backwards, so we write block 1 first)
     for (int i = 0; i < 2; i++) {
         int err = lfs_alloc(lfs, &dir->pair[(i+1)%2]);

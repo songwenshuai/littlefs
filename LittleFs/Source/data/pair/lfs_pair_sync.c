@@ -10,7 +10,8 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline bool lfs_pair_sync(
+// static inline 
+bool lfs_pair_sync(
         const lfs_block_t paira[2],
         const lfs_block_t pairb[2]) {
     return (paira[0] == pairb[0] && paira[1] == pairb[1]) ||

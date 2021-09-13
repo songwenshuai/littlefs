@@ -11,6 +11,7 @@
 // expensive basic C implementation for debugging purposes
 
 // Min/max functions for unsigned 32-bit numbers
-static inline uint32_t lfs_max(uint32_t a, uint32_t b) {
+// static inline 
+uint32_t lfs_max(uint32_t a, uint32_t b) {
     return (a > b) ? a : b;
 }

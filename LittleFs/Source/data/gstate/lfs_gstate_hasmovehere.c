@@ -10,7 +10,8 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline bool lfs_gstate_hasmovehere(const lfs_gstate_t *a,
+// static inline 
+bool lfs_gstate_hasmovehere(const lfs_gstate_t *a,
         const lfs_block_t *pair) {
     return lfs_tag_type1(a->tag) && lfs_pair_cmp(a->pair, pair) == 0;
 }

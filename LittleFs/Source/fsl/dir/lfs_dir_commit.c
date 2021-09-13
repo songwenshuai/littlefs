@@ -6,8 +6,11 @@
  */
 #include "lfs.h"
 
+void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
+
 #ifndef LFS_READONLY
-static int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
+// static 
+int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount) {
     // check for any inline files that aren't RAM backed and
     // forcefully evict them, needed for filesystem consistency

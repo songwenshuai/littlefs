@@ -10,6 +10,7 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline bool lfs_tag_isdelete(lfs_tag_t tag) {
+// static inline 
+bool lfs_tag_isdelete(lfs_tag_t tag) {
     return ((int32_t)(tag << 22) >> 22) == -1;
 }

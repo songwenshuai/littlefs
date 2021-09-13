@@ -6,8 +6,12 @@
  */
 #include "lfs.h"
 
+extern void *lfs_malloc(size_t size);
+void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+
 /// Filesystem operations ///
-static int lfs_init(lfs_t *lfs, const struct lfs_config *cfg) {
+// static 
+int lfs_init(lfs_t *lfs, const struct lfs_config *cfg) {
     lfs->cfg = cfg;
     int err = 0;
 

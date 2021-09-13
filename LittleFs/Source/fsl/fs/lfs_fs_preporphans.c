@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans) {
+// static 
+int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans) {
     LFS_ASSERT(lfs_tag_size(lfs->gstate.tag) > 0 || orphans >= 0);
     lfs->gstate.tag += orphans;
     lfs->gstate.tag = ((lfs->gstate.tag & ~LFS_MKTAG(0x800, 0, 0)) |

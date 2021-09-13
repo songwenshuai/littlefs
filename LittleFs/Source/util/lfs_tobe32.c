@@ -10,6 +10,7 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline uint32_t lfs_tobe32(uint32_t a) {
+// static inline 
+uint32_t lfs_tobe32(uint32_t a) {
     return lfs_frombe32(a);
 }

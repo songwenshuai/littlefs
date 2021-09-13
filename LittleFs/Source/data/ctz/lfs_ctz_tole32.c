@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static void lfs_ctz_tole32(struct lfs_ctz *ctz) {
+// static 
+void lfs_ctz_tole32(struct lfs_ctz *ctz) {
     ctz->head = lfs_tole32(ctz->head);
     ctz->size = lfs_tole32(ctz->size);
 }

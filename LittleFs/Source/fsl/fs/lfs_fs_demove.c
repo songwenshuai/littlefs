@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_fs_demove(lfs_t *lfs) {
+// static 
+int lfs_fs_demove(lfs_t *lfs) {
     if (!lfs_gstate_hasmove(&lfs->gdisk)) {
         return 0;
     }

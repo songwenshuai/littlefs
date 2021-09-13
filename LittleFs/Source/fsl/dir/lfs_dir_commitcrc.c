@@ -6,8 +6,20 @@
  */
 #include "lfs.h"
 
+int lfs_bd_prog(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate,
+        lfs_block_t block, lfs_off_t off,
+        const void *buffer, lfs_size_t size);
+int lfs_bd_read(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_block_t block, lfs_off_t off,
+        void *buffer, lfs_size_t size);
+int lfs_bd_sync(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate);
+
 #ifndef LFS_READONLY
-static int lfs_dir_commitcrc(lfs_t *lfs, struct lfs_commit *commit) {
+// static 
+int lfs_dir_commitcrc(lfs_t *lfs, struct lfs_commit *commit) {
     // align to program units
     const lfs_off_t end = lfs_alignup(commit->off + 2*sizeof(uint32_t),
             lfs->cfg->prog_size);

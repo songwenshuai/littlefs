@@ -10,6 +10,7 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline uint8_t lfs_gstate_getorphans(const lfs_gstate_t *a) {
+// static inline 
+uint8_t lfs_gstate_getorphans(const lfs_gstate_t *a) {
     return lfs_tag_size(a->tag);
 }

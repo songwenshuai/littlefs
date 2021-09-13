@@ -10,7 +10,8 @@
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes
 
-static inline void lfs_pair_tole32(lfs_block_t pair[2]) {
+// static inline 
+void lfs_pair_tole32(lfs_block_t pair[2]) {
     pair[0] = lfs_tole32(pair[0]);
     pair[1] = lfs_tole32(pair[1]);
 }

@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static int lfs_dir_rawclose(lfs_t *lfs, lfs_dir_t *dir) {
+// static 
+int lfs_dir_rawclose(lfs_t *lfs, lfs_dir_t *dir) {
     // remove from list of mdirs
     lfs_mlist_remove(lfs, (struct lfs_mlist *)dir);
 

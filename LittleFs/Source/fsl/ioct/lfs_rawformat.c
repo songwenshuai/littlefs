@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_rawformat(lfs_t *lfs, const struct lfs_config *cfg) {
+// static 
+int lfs_rawformat(lfs_t *lfs, const struct lfs_config *cfg) {
     int err = 0;
     {
         err = lfs_init(lfs, cfg);

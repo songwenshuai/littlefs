@@ -6,8 +6,12 @@
  */
 #include "lfs.h"
 
+int lfs_bd_flush(lfs_t *lfs,
+        lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate);
+
 #ifndef LFS_READONLY
-static int lfs_bd_prog(lfs_t *lfs,
+// static 
+int lfs_bd_prog(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate,
         lfs_block_t block, lfs_off_t off,
         const void *buffer, lfs_size_t size) {

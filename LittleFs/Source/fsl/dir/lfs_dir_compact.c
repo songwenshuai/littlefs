@@ -6,8 +6,12 @@
  */
 #include "lfs.h"
 
+int lfs_bd_erase(lfs_t *lfs, lfs_block_t block);
+void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
+
 #ifndef LFS_READONLY
-static int lfs_dir_compact(lfs_t *lfs,
+// static 
+int lfs_dir_compact(lfs_t *lfs,
         lfs_mdir_t *dir, const struct lfs_mattr *attrs, int attrcount,
         lfs_mdir_t *source, uint16_t begin, uint16_t end) {
     // save some state in case block is bad

@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
+// static 
+lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
         const char **path, uint16_t *id) {
     // we reduce path to a single name if we can find it
     const char *name = *path;

@@ -61,6 +61,36 @@ int asprintf(char **strp, const char *format, ...)
 }
 #endif
 
+// Builtin functions, these may be replaced by more efficient
+// toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
+// expensive basic C implementation for debugging purposes
+
+// Allocate memory, only used if buffers are not provided to littlefs
+// Note, memory must be 64-bit aligned
+// static inline 
+void *lfs_malloc(size_t size) {
+#ifndef LFS_NO_MALLOC
+    return malloc(size);
+#else
+    (void)size;
+    return NULL;
+#endif
+}
+
+// Builtin functions, these may be replaced by more efficient
+// toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
+// expensive basic C implementation for debugging purposes
+
+// Deallocate memory, only used if buffers are not provided to littlefs
+// static inline 
+void lfs_free(void *p) {
+#ifndef LFS_NO_MALLOC
+    free(p);
+#else
+    (void)p;
+#endif
+}
+
 static int lfs_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, void *buffer, lfs_size_t size) {
     // Check if read is valid
     LFS_ASSERT(off  % c->read_size == 0);

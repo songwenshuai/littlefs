@@ -7,7 +7,8 @@
 #include "lfs.h"
 
 #ifndef LFS_READONLY
-static int lfs_dir_traverse_filter(void *p,
+// static 
+int lfs_dir_traverse_filter(void *p,
         lfs_tag_t tag, const void *buffer) {
     lfs_tag_t *filtertag = p;
     (void)buffer;

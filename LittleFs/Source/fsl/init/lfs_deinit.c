@@ -6,7 +6,10 @@
  */
 #include "lfs.h"
 
-static int lfs_deinit(lfs_t *lfs) {
+extern void lfs_free(void *p);
+
+// static 
+int lfs_deinit(lfs_t *lfs) {
     // free allocated memory
     if (!lfs->cfg->read_buffer) {
         lfs_free(lfs->rcache.buffer);

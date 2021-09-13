@@ -6,8 +6,14 @@
  */
 #include "lfs.h"
 
+int lfs_ctz_find(lfs_t *lfs,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache,
+        lfs_block_t head, lfs_size_t size,
+        lfs_size_t pos, lfs_block_t *block, lfs_off_t *off);
+
 #ifndef LFS_READONLY
-static int lfs_file_rawtruncate(lfs_t *lfs, lfs_file_t *file, lfs_off_t size) {
+// static 
+int lfs_file_rawtruncate(lfs_t *lfs, lfs_file_t *file, lfs_off_t size) {
     LFS_ASSERT((file->flags & LFS_O_WRONLY) == LFS_O_WRONLY);
 
     if (size > LFS_FILE_MAX) {

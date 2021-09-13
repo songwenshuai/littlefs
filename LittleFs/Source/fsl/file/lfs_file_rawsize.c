@@ -6,7 +6,8 @@
  */
 #include "lfs.h"
 
-static lfs_soff_t lfs_file_rawsize(lfs_t *lfs, lfs_file_t *file) {
+// static 
+lfs_soff_t lfs_file_rawsize(lfs_t *lfs, lfs_file_t *file) {
     (void)lfs;
 
 #ifndef LFS_READONLY

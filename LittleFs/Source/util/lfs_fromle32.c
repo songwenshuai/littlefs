@@ -12,7 +12,8 @@
 
 
 // Convert between 32-bit little-endian and native order
-static inline uint32_t lfs_fromle32(uint32_t a) {
+// static inline 
+uint32_t lfs_fromle32(uint32_t a) {
 #if !defined(LFS_NO_INTRINSICS) && ( \
     (defined(  BYTE_ORDER  ) && defined(  ORDER_LITTLE_ENDIAN  ) &&   BYTE_ORDER   ==   ORDER_LITTLE_ENDIAN  ) || \
     (defined(__BYTE_ORDER  ) && defined(__ORDER_LITTLE_ENDIAN  ) && __BYTE_ORDER   == __ORDER_LITTLE_ENDIAN  ) || \
