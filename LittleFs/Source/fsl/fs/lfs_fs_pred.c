@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_pair_cmp(
         const lfs_block_t paira[2],
         const lfs_block_t pairb[2]);

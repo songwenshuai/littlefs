@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_alloc_ack(lfs_t *lfs);
 int lfs_file_relocate(lfs_t *lfs, lfs_file_t *file);
 

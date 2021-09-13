@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 bool lfs_tag_isdelete(lfs_tag_t tag);
 lfs_size_t lfs_tag_size(lfs_tag_t tag);
 

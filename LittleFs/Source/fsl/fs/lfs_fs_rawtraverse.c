@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_ctz_fromle32(struct lfs_ctz *ctz);
 int lfs_ctz_traverse(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache,

@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 bool lfs_gstate_hasmovehere(const lfs_gstate_t *a,
         const lfs_block_t *pair);
 int lfs_bd_read(lfs_t *lfs,

@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_bd_prog(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate,
         lfs_block_t block, lfs_off_t off,

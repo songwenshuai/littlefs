@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_alloc_ack(lfs_t *lfs);
 
 // drop the lookahead buffer, this is done during mounting and failed

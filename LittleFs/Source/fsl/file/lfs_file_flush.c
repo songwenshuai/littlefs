@@ -6,13 +6,16 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_bd_flush(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate);
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
 lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
         void *buffer, lfs_size_t size);
+#ifndef LFS_READONLY
 lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
         const void *buffer, lfs_size_t size);
+#endif
 int lfs_file_relocate(lfs_t *lfs, lfs_file_t *file);
 uint32_t lfs_max(uint32_t a, uint32_t b);
 

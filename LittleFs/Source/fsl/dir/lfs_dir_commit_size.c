@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 lfs_size_t lfs_tag_dsize(lfs_tag_t tag);
 
 #ifndef LFS_READONLY

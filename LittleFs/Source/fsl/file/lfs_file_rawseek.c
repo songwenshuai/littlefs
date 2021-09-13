@@ -6,7 +6,10 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
+#ifndef LFS_READONLY
 int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+#endif
 lfs_soff_t lfs_file_rawsize(lfs_t *lfs, lfs_file_t *file);
 
 // static 

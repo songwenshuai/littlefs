@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 lfs_stag_t lfs_dir_getslice(lfs_t *lfs, const lfs_mdir_t *dir,
         lfs_tag_t gmask, lfs_tag_t gtag,
         lfs_off_t goff, void *gbuffer, lfs_size_t gsize);

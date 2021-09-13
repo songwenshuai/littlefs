@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_bd_prog(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate,
         lfs_block_t block, lfs_off_t off,
@@ -20,8 +21,12 @@ int lfs_ctz_find(lfs_t *lfs,
         lfs_block_t head, lfs_size_t size,
         lfs_size_t pos, lfs_block_t *block, lfs_off_t *off);
 void lfs_alloc_ack(lfs_t *lfs);
+#ifndef LFS_READONLY
 int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+#endif
+#ifndef LFS_READONLY
 int lfs_file_outline(lfs_t *lfs, lfs_file_t *file);
+#endif
 int lfs_file_relocate(lfs_t *lfs, lfs_file_t *file);
 uint32_t lfs_max(uint32_t a, uint32_t b);
 uint32_t lfs_min(uint32_t a, uint32_t b);

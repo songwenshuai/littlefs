@@ -6,16 +6,21 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_pair_fromle32(lfs_block_t pair[2]);
 void lfs_alloc_ack(lfs_t *lfs);
 int lfs_dir_alloc(lfs_t *lfs, lfs_mdir_t *dir);
+#ifndef LFS_READONLY
 int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount);
+#endif
 int lfs_dir_fetch(lfs_t *lfs,
         lfs_mdir_t *dir, const lfs_block_t pair[2]);
 lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
         const char **path, uint16_t *id);
+#ifndef LFS_READONLY
 int lfs_fs_forceconsistency(lfs_t *lfs);
+#endif
 int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans);
 void lfs_pair_tole32(lfs_block_t pair[2]);
 

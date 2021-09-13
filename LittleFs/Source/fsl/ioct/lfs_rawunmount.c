@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_deinit(lfs_t *lfs);
 
 // static 

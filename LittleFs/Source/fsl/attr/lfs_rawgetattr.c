@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint16_t lfs_tag_id(lfs_tag_t tag);
 lfs_size_t lfs_tag_size(lfs_tag_t tag);
 int lfs_dir_fetch(lfs_t *lfs,

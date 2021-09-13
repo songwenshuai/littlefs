@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 bool lfs_gstate_hasmovehere(const lfs_gstate_t *a,
         const lfs_block_t *pair);
 int lfs_pair_cmp(
@@ -13,14 +14,22 @@ int lfs_pair_cmp(
         const lfs_block_t pairb[2]);
 void lfs_pair_fromle32(lfs_block_t pair[2]);
 uint16_t lfs_tag_id(lfs_tag_t tag);
+#ifndef LFS_READONLY
 int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount);
+#endif
+#ifndef LFS_READONLY
 lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t pair[2],
         lfs_mdir_t *parent);
+#endif
+#ifndef LFS_READONLY
 int lfs_fs_pred(lfs_t *lfs,
         const lfs_block_t pair[2], lfs_mdir_t *pdir);
+#endif
+#ifndef LFS_READONLY
 void lfs_fs_prepmove(lfs_t *lfs,
         uint16_t id, const lfs_block_t pair[2]);
+#endif
 int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans);
 void lfs_pair_tole32(lfs_block_t pair[2]);
 

@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_mlist_remove(lfs_t *lfs, struct lfs_mlist *mlist);
 
 // static 

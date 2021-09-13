@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_bd_erase(lfs_t *lfs, lfs_block_t block);
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
 bool lfs_gstate_iszero(const lfs_gstate_t *a);
@@ -37,8 +38,10 @@ int lfs_dir_traverse(lfs_t *lfs,
         uint16_t begin, uint16_t end, int16_t diff,
         int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
 lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs);
+#ifndef LFS_READONLY
 int lfs_fs_relocate(lfs_t *lfs,
         const lfs_block_t oldpair[2], lfs_block_t newpair[2]);
+#endif
 uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
 uint32_t lfs_fromle32(uint32_t a);
 uint32_t lfs_min(uint32_t a, uint32_t b);

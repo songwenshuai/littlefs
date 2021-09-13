@@ -6,11 +6,14 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_pair_fromle32(lfs_block_t pair[2]);
 uint16_t lfs_tag_id(lfs_tag_t tag);
 uint16_t lfs_tag_type3(lfs_tag_t tag);
+#ifndef LFS_READONLY
 int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount);
+#endif
 int lfs_dir_drop(lfs_t *lfs, lfs_mdir_t *dir, lfs_mdir_t *tail);
 int lfs_dir_fetch(lfs_t *lfs,
         lfs_mdir_t *dir, const lfs_block_t pair[2]);
@@ -18,10 +21,16 @@ lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
         const char **path, uint16_t *id);
 lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
         lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
+#ifndef LFS_READONLY
 int lfs_fs_forceconsistency(lfs_t *lfs);
+#endif
+#ifndef LFS_READONLY
 int lfs_fs_pred(lfs_t *lfs,
         const lfs_block_t pair[2], lfs_mdir_t *pdir);
+#endif
+#ifndef LFS_READONLY
 int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans);
+#endif
 
 #ifndef LFS_READONLY
 // static 

@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint8_t lfs_tag_chunk(lfs_tag_t tag);
 
 // Builtin functions, these may be replaced by more efficient

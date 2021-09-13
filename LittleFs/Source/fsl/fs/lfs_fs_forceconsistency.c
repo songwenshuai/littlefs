@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_fs_demove(lfs_t *lfs);
 int lfs_fs_deorphan(lfs_t *lfs);
 

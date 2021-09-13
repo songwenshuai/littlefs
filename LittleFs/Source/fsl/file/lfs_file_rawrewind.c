@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 lfs_soff_t lfs_file_rawseek(lfs_t *lfs, lfs_file_t *file,
         lfs_soff_t off, int whence);
 

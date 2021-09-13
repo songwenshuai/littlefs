@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 bool lfs_gstate_iszero(const lfs_gstate_t *a);
 bool lfs_pair_isnull(const lfs_block_t pair[2]);
 void lfs_superblock_fromle32(lfs_superblock_t *superblock);

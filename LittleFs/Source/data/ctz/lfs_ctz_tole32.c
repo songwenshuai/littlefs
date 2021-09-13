@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint32_t lfs_tole32(uint32_t a);
 
 #ifndef LFS_READONLY

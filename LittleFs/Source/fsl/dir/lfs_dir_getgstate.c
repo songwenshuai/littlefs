@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_gstate_fromle32(lfs_gstate_t *a);
 void lfs_gstate_xor(lfs_gstate_t *a, const lfs_gstate_t *b);
 lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,

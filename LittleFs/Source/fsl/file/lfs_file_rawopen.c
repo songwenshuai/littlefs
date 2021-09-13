@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_file_rawopencfg(lfs_t *lfs, lfs_file_t *file,
         const char *path, int flags,
         const struct lfs_file_config *cfg);

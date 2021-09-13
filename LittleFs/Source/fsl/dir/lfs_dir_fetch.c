@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
         lfs_mdir_t *dir, const lfs_block_t pair[2],
         lfs_tag_t fmask, lfs_tag_t ftag, uint16_t *id,

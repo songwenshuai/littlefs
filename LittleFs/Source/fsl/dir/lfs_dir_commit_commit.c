@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_dir_commitattr(lfs_t *lfs, struct lfs_commit *commit,
         lfs_tag_t tag, const void *buffer);
 

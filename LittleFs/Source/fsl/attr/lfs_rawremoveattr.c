@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_commitattr(lfs_t *lfs, const char *path,
         uint8_t type, const void *buffer, lfs_size_t size);
 

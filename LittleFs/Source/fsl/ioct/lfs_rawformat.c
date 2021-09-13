@@ -6,11 +6,14 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_superblock_tole32(lfs_superblock_t *superblock);
 void lfs_alloc_ack(lfs_t *lfs);
 int lfs_dir_alloc(lfs_t *lfs, lfs_mdir_t *dir);
+#ifndef LFS_READONLY
 int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount);
+#endif
 int lfs_dir_fetch(lfs_t *lfs,
         lfs_mdir_t *dir, const lfs_block_t pair[2]);
 int lfs_deinit(lfs_t *lfs);

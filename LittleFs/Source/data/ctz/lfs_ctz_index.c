@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint32_t lfs_popc(uint32_t a);
 
 /// File index list operations ///

@@ -6,11 +6,16 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_ctz_tole32(struct lfs_ctz *ctz);
 bool lfs_pair_isnull(const lfs_block_t pair[2]);
+#ifndef LFS_READONLY
 int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount);
+#endif
+#ifndef LFS_READONLY
 int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+#endif
 
 #ifndef LFS_READONLY
 // static 

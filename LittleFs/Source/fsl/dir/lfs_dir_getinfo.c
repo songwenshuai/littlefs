@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_ctz_fromle32(struct lfs_ctz *ctz);
 lfs_size_t lfs_tag_size(lfs_tag_t tag);
 uint16_t lfs_tag_type3(lfs_tag_t tag);

@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint32_t lfs_max(uint32_t a, uint32_t b);
 
 // static 

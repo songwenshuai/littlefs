@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 int lfs_dir_fetch(lfs_t *lfs,
         lfs_mdir_t *dir, const lfs_block_t pair[2]);
 

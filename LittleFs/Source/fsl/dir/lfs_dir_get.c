@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 lfs_size_t lfs_tag_size(lfs_tag_t tag);
 lfs_stag_t lfs_dir_getslice(lfs_t *lfs, const lfs_mdir_t *dir,
         lfs_tag_t gmask, lfs_tag_t gtag,

@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint16_t lfs_tag_id(lfs_tag_t tag);
 bool lfs_tag_isdelete(lfs_tag_t tag);
 int8_t lfs_tag_splice(lfs_tag_t tag);

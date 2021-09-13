@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 lfs_size_t lfs_tag_size(lfs_tag_t tag);
 
 // Builtin functions, these may be replaced by more efficient

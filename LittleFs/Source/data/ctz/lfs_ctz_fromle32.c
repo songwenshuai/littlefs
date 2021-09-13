@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint32_t lfs_fromle32(uint32_t a);
 
 // other endianness operations

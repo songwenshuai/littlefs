@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint32_t lfs_aligndown(uint32_t a, uint32_t alignment);
 
 // Builtin functions, these may be replaced by more efficient

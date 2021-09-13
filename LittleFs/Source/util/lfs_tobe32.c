@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 uint32_t lfs_frombe32(uint32_t a);
 
 // Builtin functions, these may be replaced by more efficient

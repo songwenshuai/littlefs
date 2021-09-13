@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_pair_fromle32(lfs_block_t pair[2]);
 uint16_t lfs_tag_id(lfs_tag_t tag);
 uint16_t lfs_tag_type3(lfs_tag_t tag);

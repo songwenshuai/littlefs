@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_alloc_drop(lfs_t *lfs);
 int lfs_alloc_lookahead(void *p, lfs_block_t block);
 int lfs_fs_rawtraverse(lfs_t *lfs,

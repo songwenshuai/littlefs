@@ -6,9 +6,12 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 void lfs_pair_fromle32(lfs_block_t pair[2]);
+#ifndef LFS_READONLY
 int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
         const struct lfs_mattr *attrs, int attrcount);
+#endif
 int lfs_dir_getgstate(lfs_t *lfs, const lfs_mdir_t *dir,
         lfs_gstate_t *gstate);
 void lfs_pair_tole32(lfs_block_t pair[2]);

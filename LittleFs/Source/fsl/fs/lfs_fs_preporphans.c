@@ -6,6 +6,7 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 bool lfs_gstate_hasorphans(const lfs_gstate_t *a);
 lfs_size_t lfs_tag_size(lfs_tag_t tag);
 

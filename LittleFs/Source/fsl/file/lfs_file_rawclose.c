@@ -6,9 +6,12 @@
  */
 #include "lfs.h"
 
+/// Internal operations predeclared here ///
 extern void lfs_free(void *p);
 void lfs_mlist_remove(lfs_t *lfs, struct lfs_mlist *mlist);
+#ifndef LFS_READONLY
 int lfs_file_rawsync(lfs_t *lfs, lfs_file_t *file);
+#endif
 
 // static 
 int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file) {
