@@ -8,6 +8,8 @@
 
 extern void *lfs_malloc(size_t size);
 void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+int lfs_deinit(lfs_t *lfs);
+uint32_t lfs_npw2(uint32_t a);
 
 /// Filesystem operations ///
 // static 

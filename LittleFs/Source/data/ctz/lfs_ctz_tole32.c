@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+uint32_t lfs_tole32(uint32_t a);
+
 #ifndef LFS_READONLY
 // static 
 void lfs_ctz_tole32(struct lfs_ctz *ctz) {

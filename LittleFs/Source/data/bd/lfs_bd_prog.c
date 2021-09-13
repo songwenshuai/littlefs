@@ -8,6 +8,9 @@
 
 int lfs_bd_flush(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate);
+uint32_t lfs_aligndown(uint32_t a, uint32_t alignment);
+uint32_t lfs_max(uint32_t a, uint32_t b);
+uint32_t lfs_min(uint32_t a, uint32_t b);
 
 #ifndef LFS_READONLY
 // static 

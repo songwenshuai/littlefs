@@ -6,6 +6,9 @@
  */
 #include "lfs.h"
 
+int lfs_fs_demove(lfs_t *lfs);
+int lfs_fs_deorphan(lfs_t *lfs);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_fs_forceconsistency(lfs_t *lfs) {

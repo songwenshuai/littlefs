@@ -6,6 +6,13 @@
  */
 #include "lfs.h"
 
+int lfs_pair_cmp(
+        const lfs_block_t paira[2],
+        const lfs_block_t pairb[2]);
+bool lfs_pair_isnull(const lfs_block_t pair[2]);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_fs_pred(lfs_t *lfs,

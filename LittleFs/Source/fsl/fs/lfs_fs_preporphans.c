@@ -6,6 +6,9 @@
  */
 #include "lfs.h"
 
+bool lfs_gstate_hasorphans(const lfs_gstate_t *a);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_fs_preporphans(lfs_t *lfs, int8_t orphans) {

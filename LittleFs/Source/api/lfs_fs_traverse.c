@@ -6,6 +6,10 @@
  */
 #include "lfs.h"
 
+int lfs_fs_rawtraverse(lfs_t *lfs,
+        int (*cb)(void *data, lfs_block_t block), void *data,
+        bool includeorphans);
+
 int lfs_fs_traverse(lfs_t *lfs, int (*cb)(void *, lfs_block_t), void *data) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

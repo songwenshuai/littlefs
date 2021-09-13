@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawrename(lfs_t *lfs, const char *oldpath, const char *newpath);
+
 #ifndef LFS_READONLY
 int lfs_rename(lfs_t *lfs, const char *oldpath, const char *newpath) {
     int err = LFS_LOCK(lfs->cfg);

@@ -6,6 +6,14 @@
  */
 #include "lfs.h"
 
+uint16_t lfs_tag_id(lfs_tag_t tag);
+int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
+        const struct lfs_mattr *attrs, int attrcount);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
+        const char **path, uint16_t *id);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_commitattr(lfs_t *lfs, const char *path,

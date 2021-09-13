@@ -6,6 +6,12 @@
  */
 #include "lfs.h"
 
+uint16_t lfs_tag_id(lfs_tag_t tag);
+lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
+        const char **path, uint16_t *id);
+int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,
+        uint16_t id, struct lfs_info *info);
+
 /// General fs operations ///
 // static 
 int lfs_rawstat(lfs_t *lfs, const char *path, struct lfs_info *info) {

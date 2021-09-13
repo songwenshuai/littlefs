@@ -6,6 +6,18 @@
  */
 #include "lfs.h"
 
+void lfs_pair_fromle32(lfs_block_t pair[2]);
+uint16_t lfs_tag_id(lfs_tag_t tag);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2],
+        lfs_tag_t fmask, lfs_tag_t ftag, uint16_t *id,
+        int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
+int lfs_dir_find_match(void *data,
+        lfs_tag_t tag, const void *buffer);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
+
 // static 
 lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
         const char **path, uint16_t *id) {

@@ -6,6 +6,16 @@
  */
 #include "lfs.h"
 
+uint16_t lfs_tag_id(lfs_tag_t tag);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
+        const char **path, uint16_t *id);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+
 // static 
 lfs_ssize_t lfs_rawgetattr(lfs_t *lfs, const char *path,
         uint8_t type, void *buffer, lfs_size_t size) {

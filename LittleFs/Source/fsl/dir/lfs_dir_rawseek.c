@@ -6,6 +6,14 @@
  */
 #include "lfs.h"
 
+int lfs_pair_cmp(
+        const lfs_block_t paira[2],
+        const lfs_block_t pairb[2]);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+int lfs_dir_rawrewind(lfs_t *lfs, lfs_dir_t *dir);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+
 // static 
 int lfs_dir_rawseek(lfs_t *lfs, lfs_dir_t *dir, lfs_off_t off) {
     // simply walk from head dir

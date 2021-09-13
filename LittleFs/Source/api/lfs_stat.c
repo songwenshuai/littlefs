@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawstat(lfs_t *lfs, const char *path, struct lfs_info *info);
+
 int lfs_stat(lfs_t *lfs, const char *path, struct lfs_info *info) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

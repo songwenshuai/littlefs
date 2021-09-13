@@ -6,6 +6,10 @@
  */
 #include "lfs.h"
 
+uint32_t lfs_aligndown(uint32_t a, uint32_t alignment);
+uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+
 // static 
 int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,

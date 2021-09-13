@@ -17,6 +17,11 @@ int lfs_bd_read(lfs_t *lfs,
         void *buffer, lfs_size_t size);
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
 void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+int lfs_alloc(lfs_t *lfs, lfs_block_t *block);
+int lfs_dir_getread(lfs_t *lfs, const lfs_mdir_t *dir,
+        const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
+        lfs_tag_t gmask, lfs_tag_t gtag,
+        lfs_off_t off, void *buffer, lfs_size_t size);
 
 #ifndef LFS_READONLY
 // static 

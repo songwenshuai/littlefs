@@ -7,8 +7,6 @@
 #ifndef LFS_PORT_H
 #define LFS_PORT_H
 
-#include "littlefs_cfg.h"
-#include "lfs_util.h"
 #include "lfs.h"
 #include "fal.h"
 

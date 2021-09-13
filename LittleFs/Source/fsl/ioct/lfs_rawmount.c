@@ -6,6 +6,25 @@
  */
 #include "lfs.h"
 
+bool lfs_gstate_iszero(const lfs_gstate_t *a);
+bool lfs_pair_isnull(const lfs_block_t pair[2]);
+void lfs_superblock_fromle32(lfs_superblock_t *superblock);
+bool lfs_tag_isdelete(lfs_tag_t tag);
+bool lfs_tag_isvalid(lfs_tag_t tag);
+void lfs_alloc_drop(lfs_t *lfs);
+lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2],
+        lfs_tag_t fmask, lfs_tag_t ftag, uint16_t *id,
+        int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
+int lfs_dir_find_match(void *data,
+        lfs_tag_t tag, const void *buffer);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
+int lfs_dir_getgstate(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_gstate_t *gstate);
+int lfs_init(lfs_t *lfs, const struct lfs_config *cfg);
+int lfs_rawunmount(lfs_t *lfs);
+
 // static 
 int lfs_rawmount(lfs_t *lfs, const struct lfs_config *cfg) {
     int err = lfs_init(lfs, cfg);

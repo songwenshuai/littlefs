@@ -7,6 +7,40 @@
 #include "lfs.h"
 
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
+bool lfs_gstate_iszero(const lfs_gstate_t *a);
+void lfs_gstate_tole32(lfs_gstate_t *a);
+void lfs_gstate_xor(lfs_gstate_t *a, const lfs_gstate_t *b);
+int lfs_pair_cmp(
+        const lfs_block_t paira[2],
+        const lfs_block_t pairb[2]);
+void lfs_pair_fromle32(lfs_block_t pair[2]);
+uint8_t lfs_tag_chunk(lfs_tag_t tag);
+uint16_t lfs_tag_id(lfs_tag_t tag);
+uint16_t lfs_tag_type1(lfs_tag_t tag);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+int lfs_dir_commit_commit(void *p, lfs_tag_t tag, const void *buffer);
+int lfs_dir_commitattr(lfs_t *lfs, struct lfs_commit *commit,
+        lfs_tag_t tag, const void *buffer);
+int lfs_dir_commitcrc(lfs_t *lfs, struct lfs_commit *commit);
+int lfs_dir_compact(lfs_t *lfs,
+        lfs_mdir_t *dir, const struct lfs_mattr *attrs, int attrcount,
+        lfs_mdir_t *source, uint16_t begin, uint16_t end);
+int lfs_dir_drop(lfs_t *lfs, lfs_mdir_t *dir, lfs_mdir_t *tail);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+int lfs_dir_getgstate(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_gstate_t *gstate);
+int lfs_dir_traverse(lfs_t *lfs,
+        const lfs_mdir_t *dir, lfs_off_t off, lfs_tag_t ptag,
+        const struct lfs_mattr *attrs, int attrcount,
+        lfs_tag_t tmask, lfs_tag_t ttag,
+        uint16_t begin, uint16_t end, int16_t diff,
+        int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
+int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+int lfs_file_outline(lfs_t *lfs, lfs_file_t *file);
+int lfs_fs_pred(lfs_t *lfs,
+        const lfs_block_t pair[2], lfs_mdir_t *pdir);
+void lfs_pair_tole32(lfs_block_t pair[2]);
 
 #ifndef LFS_READONLY
 // static 

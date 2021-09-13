@@ -10,6 +10,9 @@ int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size);
+int lfs_alloc(lfs_t *lfs, lfs_block_t *block);
+uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
+uint32_t lfs_fromle32(uint32_t a);
 
 #ifndef LFS_READONLY
 // static 

@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_dir_rawseek(lfs_t *lfs, lfs_dir_t *dir, lfs_off_t off);
+
 int lfs_dir_seek(lfs_t *lfs, lfs_dir_t *dir, lfs_off_t off) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

@@ -18,6 +18,9 @@ int lfs_bd_read(lfs_t *lfs,
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
 int lfs_ctz_index(lfs_t *lfs, lfs_off_t *off);
 uint32_t lfs_ctz(uint32_t a);
+int lfs_alloc(lfs_t *lfs, lfs_block_t *block);
+uint32_t lfs_fromle32(uint32_t a);
+uint32_t lfs_tole32(uint32_t a);
 
 #ifndef LFS_READONLY
 // static 

@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs);
+
 lfs_ssize_t lfs_fs_size(lfs_t *lfs) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

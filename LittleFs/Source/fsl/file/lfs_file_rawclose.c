@@ -7,6 +7,8 @@
 #include "lfs.h"
 
 extern void lfs_free(void *p);
+void lfs_mlist_remove(lfs_t *lfs, struct lfs_mlist *mlist);
+int lfs_file_rawsync(lfs_t *lfs, lfs_file_t *file);
 
 // static 
 int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file) {

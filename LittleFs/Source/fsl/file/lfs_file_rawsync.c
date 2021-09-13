@@ -7,6 +7,10 @@
 #include "lfs.h"
 
 void lfs_ctz_tole32(struct lfs_ctz *ctz);
+bool lfs_pair_isnull(const lfs_block_t pair[2]);
+int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
+        const struct lfs_mattr *attrs, int attrcount);
+int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
 
 #ifndef LFS_READONLY
 // static 

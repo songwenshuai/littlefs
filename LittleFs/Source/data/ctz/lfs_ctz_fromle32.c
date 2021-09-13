@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+uint32_t lfs_fromle32(uint32_t a);
+
 // other endianness operations
 // static 
 void lfs_ctz_fromle32(struct lfs_ctz *ctz) {

@@ -6,6 +6,17 @@
  */
 #include "lfs.h"
 
+void lfs_mlist_append(lfs_t *lfs, struct lfs_mlist *mlist);
+void lfs_pair_fromle32(lfs_block_t pair[2]);
+uint16_t lfs_tag_id(lfs_tag_t tag);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
+        const char **path, uint16_t *id);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
+
 // static 
 int lfs_dir_rawopen(lfs_t *lfs, lfs_dir_t *dir, const char *path) {
     lfs_stag_t tag = lfs_dir_find(lfs, &dir->m, &path, NULL);

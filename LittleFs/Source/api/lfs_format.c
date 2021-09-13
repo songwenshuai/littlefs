@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawformat(lfs_t *lfs, const struct lfs_config *cfg);
+
 // Public API
 #ifndef LFS_READONLY
 int lfs_format(lfs_t *lfs, const struct lfs_config *cfg) {

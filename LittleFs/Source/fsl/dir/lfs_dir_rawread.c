@@ -6,6 +6,11 @@
  */
 #include "lfs.h"
 
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,
+        uint16_t id, struct lfs_info *info);
+
 // static 
 int lfs_dir_rawread(lfs_t *lfs, lfs_dir_t *dir, struct lfs_info *info) {
     memset(info, 0, sizeof(*info));

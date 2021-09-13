@@ -10,6 +10,10 @@ int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size);
+int lfs_pair_cmp(
+        const lfs_block_t paira[2],
+        const lfs_block_t pairb[2]);
+void lfs_pair_fromle32(lfs_block_t pair[2]);
 
 #ifndef LFS_READONLY
 // static 

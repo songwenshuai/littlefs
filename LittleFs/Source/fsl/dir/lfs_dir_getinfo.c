@@ -7,6 +7,10 @@
 #include "lfs.h"
 
 void lfs_ctz_fromle32(struct lfs_ctz *ctz);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
 
 // static 
 int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,

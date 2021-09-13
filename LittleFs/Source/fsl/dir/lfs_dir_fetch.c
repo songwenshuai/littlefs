@@ -6,6 +6,11 @@
  */
 #include "lfs.h"
 
+lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2],
+        lfs_tag_t fmask, lfs_tag_t ftag, uint16_t *id,
+        int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
+
 // static 
 int lfs_dir_fetch(lfs_t *lfs,
         lfs_mdir_t *dir, const lfs_block_t pair[2]) {

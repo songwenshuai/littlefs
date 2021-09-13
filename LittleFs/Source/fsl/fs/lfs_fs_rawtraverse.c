@@ -11,6 +11,12 @@ int lfs_ctz_traverse(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache,
         lfs_block_t head, lfs_size_t size,
         int (*cb)(void*, lfs_block_t), void *data);
+bool lfs_pair_isnull(const lfs_block_t pair[2]);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
 
 /// Filesystem filesystem operations ///
 // static 

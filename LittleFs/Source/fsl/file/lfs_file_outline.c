@@ -6,6 +6,9 @@
  */
 #include "lfs.h"
 
+void lfs_alloc_ack(lfs_t *lfs);
+int lfs_file_relocate(lfs_t *lfs, lfs_file_t *file);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_file_outline(lfs_t *lfs, lfs_file_t *file) {

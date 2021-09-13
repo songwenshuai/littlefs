@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawunmount(lfs_t *lfs);
+
 int lfs_unmount(lfs_t *lfs) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

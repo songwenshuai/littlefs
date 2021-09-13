@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_file_rawrewind(lfs_t *lfs, lfs_file_t *file);
+
 int lfs_file_rewind(lfs_t *lfs, lfs_file_t *file) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

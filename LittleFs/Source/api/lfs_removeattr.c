@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawremoveattr(lfs_t *lfs, const char *path, uint8_t type);
+
 #ifndef LFS_READONLY
 int lfs_removeattr(lfs_t *lfs, const char *path, uint8_t type) {
     int err = LFS_LOCK(lfs->cfg);

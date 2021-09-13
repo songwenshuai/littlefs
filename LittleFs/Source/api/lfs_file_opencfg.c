@@ -6,6 +6,12 @@
  */
 #include "lfs.h"
 
+bool lfs_mlist_isopen(struct lfs_mlist *head,
+        struct lfs_mlist *node);
+int lfs_file_rawopencfg(lfs_t *lfs, lfs_file_t *file,
+        const char *path, int flags,
+        const struct lfs_file_config *cfg);
+
 int lfs_file_opencfg(lfs_t *lfs, lfs_file_t *file,
         const char *path, int flags,
         const struct lfs_file_config *cfg) {

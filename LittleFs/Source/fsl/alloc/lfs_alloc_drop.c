@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+void lfs_alloc_ack(lfs_t *lfs);
+
 // drop the lookahead buffer, this is done during mounting and failed
 // traversals in order to avoid invalid lookahead state
 // static 

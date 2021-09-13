@@ -16,6 +16,14 @@ int lfs_bd_read(lfs_t *lfs,
         void *buffer, lfs_size_t size);
 int lfs_bd_sync(lfs_t *lfs,
         lfs_cache_t *pcache, lfs_cache_t *rcache, bool validate);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+// Calculate CRC-32 with polynomial = 0x04c11db7
+uint32_t lfs_crc(uint32_t crc, const void *buffer, size_t size);
+uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
+uint32_t lfs_frombe32(uint32_t a);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+uint32_t lfs_tobe32(uint32_t a);
+uint32_t lfs_tole32(uint32_t a);
 
 #ifndef LFS_READONLY
 // static 

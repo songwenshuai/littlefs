@@ -10,6 +10,7 @@ int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size);
+uint32_t lfs_min(uint32_t a, uint32_t b);
 
 // static 
 int lfs_bd_cmp(lfs_t *lfs,

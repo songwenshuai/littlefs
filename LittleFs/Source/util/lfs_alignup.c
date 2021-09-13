@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+uint32_t lfs_aligndown(uint32_t a, uint32_t alignment);
+
 // Builtin functions, these may be replaced by more efficient
 // toolchain-specific implementations. LFS_NO_INTRINSICS falls back to a more
 // expensive basic C implementation for debugging purposes

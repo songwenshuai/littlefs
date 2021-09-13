@@ -10,6 +10,8 @@ int lfs_bd_cmp(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         const void *buffer, lfs_size_t size);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+uint32_t lfs_min(uint32_t a, uint32_t b);
 
 // static 
 int lfs_dir_find_match(void *data,

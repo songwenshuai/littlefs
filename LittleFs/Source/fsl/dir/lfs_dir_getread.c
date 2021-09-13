@@ -6,6 +6,13 @@
  */
 #include "lfs.h"
 
+lfs_stag_t lfs_dir_getslice(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag,
+        lfs_off_t goff, void *gbuffer, lfs_size_t gsize);
+uint32_t lfs_aligndown(uint32_t a, uint32_t alignment);
+uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+
 // static 
 int lfs_dir_getread(lfs_t *lfs, const lfs_mdir_t *dir,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,

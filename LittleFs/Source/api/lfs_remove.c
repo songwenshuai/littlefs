@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawremove(lfs_t *lfs, const char *path);
+
 #ifndef LFS_READONLY
 int lfs_remove(lfs_t *lfs, const char *path) {
     int err = LFS_LOCK(lfs->cfg);

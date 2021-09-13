@@ -6,6 +6,9 @@
  */
 #include "lfs.h"
 
+lfs_ssize_t lfs_rawgetattr(lfs_t *lfs, const char *path,
+        uint8_t type, void *buffer, lfs_size_t size);
+
 lfs_ssize_t lfs_getattr(lfs_t *lfs, const char *path,
         uint8_t type, void *buffer, lfs_size_t size) {
     int err = LFS_LOCK(lfs->cfg);

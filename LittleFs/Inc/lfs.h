@@ -9,7 +9,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "lfs_util.h"
+
 // Users can override lfs_util.h with their own configuration by defining
 // LFS_CONFIG as a header file to include (-DLFS_CONFIG=lfs_config.h).
 //
@@ -827,9 +827,6 @@ lfs_ssize_t lfs_fs_size(lfs_t *lfs);
 //
 // Returns a negative error code on failure.
 int lfs_fs_traverse(lfs_t *lfs, int (*cb)(void*, lfs_block_t), void *data);
-
-// Calculate CRC-32 with polynomial = 0x04c11db7
-uint32_t lfs_crc(uint32_t crc, const void *buffer, size_t size);
 
 #ifdef __cplusplus
 } /* extern "C" */

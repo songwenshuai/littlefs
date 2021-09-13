@@ -19,6 +19,12 @@ int lfs_ctz_find(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache,
         lfs_block_t head, lfs_size_t size,
         lfs_size_t pos, lfs_block_t *block, lfs_off_t *off);
+void lfs_alloc_ack(lfs_t *lfs);
+int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+int lfs_file_outline(lfs_t *lfs, lfs_file_t *file);
+int lfs_file_relocate(lfs_t *lfs, lfs_file_t *file);
+uint32_t lfs_max(uint32_t a, uint32_t b);
+uint32_t lfs_min(uint32_t a, uint32_t b);
 
 #ifndef LFS_READONLY
 // static 

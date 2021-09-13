@@ -6,6 +6,17 @@
  */
 #include "lfs.h"
 
+void lfs_superblock_tole32(lfs_superblock_t *superblock);
+void lfs_alloc_ack(lfs_t *lfs);
+int lfs_dir_alloc(lfs_t *lfs, lfs_mdir_t *dir);
+int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
+        const struct lfs_mattr *attrs, int attrcount);
+int lfs_dir_fetch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2]);
+int lfs_deinit(lfs_t *lfs);
+int lfs_init(lfs_t *lfs, const struct lfs_config *cfg);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_rawformat(lfs_t *lfs, const struct lfs_config *cfg) {

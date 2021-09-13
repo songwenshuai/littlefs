@@ -6,6 +6,11 @@
  */
 #include "lfs.h"
 
+bool lfs_mlist_isopen(struct lfs_mlist *head,
+        struct lfs_mlist *node);
+lfs_ssize_t lfs_file_rawread(lfs_t *lfs, lfs_file_t *file,
+        void *buffer, lfs_size_t size);
+
 lfs_ssize_t lfs_file_read(lfs_t *lfs, lfs_file_t *file,
         void *buffer, lfs_size_t size) {
     int err = LFS_LOCK(lfs->cfg);

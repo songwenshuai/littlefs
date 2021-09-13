@@ -10,6 +10,12 @@ int lfs_ctz_find(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache,
         lfs_block_t head, lfs_size_t size,
         lfs_size_t pos, lfs_block_t *block, lfs_off_t *off);
+int lfs_file_flush(lfs_t *lfs, lfs_file_t *file);
+lfs_soff_t lfs_file_rawseek(lfs_t *lfs, lfs_file_t *file,
+        lfs_soff_t off, int whence);
+lfs_soff_t lfs_file_rawsize(lfs_t *lfs, lfs_file_t *file);
+lfs_ssize_t lfs_file_rawwrite(lfs_t *lfs, lfs_file_t *file,
+        const void *buffer, lfs_size_t size);
 
 #ifndef LFS_READONLY
 // static 

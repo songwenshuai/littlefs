@@ -6,6 +6,14 @@
  */
 #include "lfs.h"
 
+bool lfs_pair_isnull(const lfs_block_t pair[2]);
+lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,
+        lfs_mdir_t *dir, const lfs_block_t pair[2],
+        lfs_tag_t fmask, lfs_tag_t ftag, uint16_t *id,
+        int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
+int lfs_fs_parent_match(void *data,
+        lfs_tag_t tag, const void *buffer);
+
 #ifndef LFS_READONLY
 // static 
 lfs_stag_t lfs_fs_parent(lfs_t *lfs, const lfs_block_t pair[2],

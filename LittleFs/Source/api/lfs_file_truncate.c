@@ -6,6 +6,10 @@
  */
 #include "lfs.h"
 
+bool lfs_mlist_isopen(struct lfs_mlist *head,
+        struct lfs_mlist *node);
+int lfs_file_rawtruncate(lfs_t *lfs, lfs_file_t *file, lfs_off_t size);
+
 #ifndef LFS_READONLY
 int lfs_file_truncate(lfs_t *lfs, lfs_file_t *file, lfs_off_t size) {
     int err = LFS_LOCK(lfs->cfg);

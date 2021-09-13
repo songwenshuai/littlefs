@@ -8,6 +8,42 @@
 
 int lfs_bd_erase(lfs_t *lfs, lfs_block_t block);
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
+bool lfs_gstate_iszero(const lfs_gstate_t *a);
+void lfs_gstate_tole32(lfs_gstate_t *a);
+void lfs_gstate_xor(lfs_gstate_t *a, const lfs_gstate_t *b);
+int lfs_pair_cmp(
+        const lfs_block_t paira[2],
+        const lfs_block_t pairb[2]);
+void lfs_pair_fromle32(lfs_block_t pair[2]);
+bool lfs_pair_isnull(const lfs_block_t pair[2]);
+void lfs_pair_swap(lfs_block_t pair[2]);
+int lfs_alloc(lfs_t *lfs, lfs_block_t *block);
+int lfs_dir_commit_commit(void *p, lfs_tag_t tag, const void *buffer);
+int lfs_dir_commit_size(void *p, lfs_tag_t tag, const void *buffer);
+int lfs_dir_commitattr(lfs_t *lfs, struct lfs_commit *commit,
+        lfs_tag_t tag, const void *buffer);
+int lfs_dir_commitcrc(lfs_t *lfs, struct lfs_commit *commit);
+int lfs_dir_commitprog(lfs_t *lfs, struct lfs_commit *commit,
+        const void *buffer, lfs_size_t size);
+int lfs_dir_getgstate(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_gstate_t *gstate);
+int lfs_dir_split(lfs_t *lfs,
+        lfs_mdir_t *dir, const struct lfs_mattr *attrs, int attrcount,
+        lfs_mdir_t *source, uint16_t split, uint16_t end);
+int lfs_dir_traverse(lfs_t *lfs,
+        const lfs_mdir_t *dir, lfs_off_t off, lfs_tag_t ptag,
+        const struct lfs_mattr *attrs, int attrcount,
+        lfs_tag_t tmask, lfs_tag_t ttag,
+        uint16_t begin, uint16_t end, int16_t diff,
+        int (*cb)(void *data, lfs_tag_t tag, const void *buffer), void *data);
+lfs_ssize_t lfs_fs_rawsize(lfs_t *lfs);
+int lfs_fs_relocate(lfs_t *lfs,
+        const lfs_block_t oldpair[2], lfs_block_t newpair[2]);
+uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
+uint32_t lfs_fromle32(uint32_t a);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+void lfs_pair_tole32(lfs_block_t pair[2]);
+uint32_t lfs_tole32(uint32_t a);
 
 #ifndef LFS_READONLY
 // static 

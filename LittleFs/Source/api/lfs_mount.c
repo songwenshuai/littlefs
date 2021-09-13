@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawmount(lfs_t *lfs, const struct lfs_config *cfg);
+
 int lfs_mount(lfs_t *lfs, const struct lfs_config *cfg) {
     int err = LFS_LOCK(cfg);
     if (err) {

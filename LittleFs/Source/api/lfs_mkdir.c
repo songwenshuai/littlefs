@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_rawmkdir(lfs_t *lfs, const char *path);
+
 #ifndef LFS_READONLY
 int lfs_mkdir(lfs_t *lfs, const char *path) {
     int err = LFS_LOCK(lfs->cfg);

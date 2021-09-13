@@ -10,6 +10,13 @@ int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size);
+lfs_size_t lfs_tag_dsize(lfs_tag_t tag);
+uint16_t lfs_tag_id(lfs_tag_t tag);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+int lfs_dir_traverse_filter(void *p,
+        lfs_tag_t tag, const void *buffer);
+uint32_t lfs_frombe32(uint32_t a);
 
 #ifndef LFS_READONLY
 // static 

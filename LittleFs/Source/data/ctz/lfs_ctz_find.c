@@ -12,6 +12,9 @@ int lfs_bd_read(lfs_t *lfs,
         void *buffer, lfs_size_t size);
 int lfs_ctz_index(lfs_t *lfs, lfs_off_t *off);
 uint32_t lfs_ctz(uint32_t a);
+uint32_t lfs_fromle32(uint32_t a);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+uint32_t lfs_npw2(uint32_t a);
 
 // static 
 int lfs_ctz_find(lfs_t *lfs,

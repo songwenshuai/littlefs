@@ -6,6 +6,9 @@
  */
 #include "lfs.h"
 
+int lfs_dir_commitattr(lfs_t *lfs, struct lfs_commit *commit,
+        lfs_tag_t tag, const void *buffer);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_dir_commit_commit(void *p, lfs_tag_t tag, const void *buffer) {

@@ -6,6 +6,13 @@
  */
 #include "lfs.h"
 
+void lfs_alloc_drop(lfs_t *lfs);
+int lfs_alloc_lookahead(void *p, lfs_block_t block);
+int lfs_fs_rawtraverse(lfs_t *lfs,
+        int (*cb)(void *data, lfs_block_t block), void *data,
+        bool includeorphans);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_alloc(lfs_t *lfs, lfs_block_t *block) {

@@ -12,6 +12,7 @@ int lfs_bd_cmp(lfs_t *lfs,
         const void *buffer, lfs_size_t size);
 void lfs_cache_drop(lfs_t *lfs, lfs_cache_t *rcache);
 void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
+uint32_t lfs_alignup(uint32_t a, uint32_t alignment);
 
 #ifndef LFS_READONLY
 // static 

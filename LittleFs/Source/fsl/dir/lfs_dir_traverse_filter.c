@@ -6,6 +6,11 @@
  */
 #include "lfs.h"
 
+uint16_t lfs_tag_id(lfs_tag_t tag);
+bool lfs_tag_isdelete(lfs_tag_t tag);
+int8_t lfs_tag_splice(lfs_tag_t tag);
+uint16_t lfs_tag_type1(lfs_tag_t tag);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_dir_traverse_filter(void *p,

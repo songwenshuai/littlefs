@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+int lfs_dir_rawclose(lfs_t *lfs, lfs_dir_t *dir);
+
 int lfs_dir_close(lfs_t *lfs, lfs_dir_t *dir) {
     int err = LFS_LOCK(lfs->cfg);
     if (err) {

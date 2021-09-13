@@ -9,6 +9,18 @@
 extern void *lfs_malloc(size_t size);
 void lfs_cache_zero(lfs_t *lfs, lfs_cache_t *pcache);
 void lfs_ctz_fromle32(struct lfs_ctz *ctz);
+void lfs_mlist_append(lfs_t *lfs, struct lfs_mlist *mlist);
+lfs_size_t lfs_tag_size(lfs_tag_t tag);
+uint16_t lfs_tag_type3(lfs_tag_t tag);
+int lfs_dir_commit(lfs_t *lfs, lfs_mdir_t *dir,
+        const struct lfs_mattr *attrs, int attrcount);
+lfs_stag_t lfs_dir_find(lfs_t *lfs, lfs_mdir_t *dir,
+        const char **path, uint16_t *id);
+lfs_stag_t lfs_dir_get(lfs_t *lfs, const lfs_mdir_t *dir,
+        lfs_tag_t gmask, lfs_tag_t gtag, void *buffer);
+int lfs_file_rawclose(lfs_t *lfs, lfs_file_t *file);
+int lfs_fs_forceconsistency(lfs_t *lfs);
+uint32_t lfs_min(uint32_t a, uint32_t b);
 
 /// Top level file operations ///
 // static 

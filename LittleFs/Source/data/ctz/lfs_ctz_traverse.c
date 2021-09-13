@@ -11,6 +11,7 @@ int lfs_bd_read(lfs_t *lfs,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size);
 int lfs_ctz_index(lfs_t *lfs, lfs_off_t *off);
+uint32_t lfs_fromle32(uint32_t a);
 
 // static 
 int lfs_ctz_traverse(lfs_t *lfs,

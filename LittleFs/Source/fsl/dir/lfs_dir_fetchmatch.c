@@ -6,10 +6,27 @@
  */
 #include "lfs.h"
 
+bool lfs_gstate_hasmovehere(const lfs_gstate_t *a,
+        const lfs_block_t *pair);
 int lfs_bd_read(lfs_t *lfs,
         const lfs_cache_t *pcache, lfs_cache_t *rcache, lfs_size_t hint,
         lfs_block_t block, lfs_off_t off,
         void *buffer, lfs_size_t size);
+void lfs_pair_fromle32(lfs_block_t pair[2]);
+void lfs_pair_swap(lfs_block_t pair[2]);
+uint8_t lfs_tag_chunk(lfs_tag_t tag);
+lfs_size_t lfs_tag_dsize(lfs_tag_t tag);
+uint16_t lfs_tag_id(lfs_tag_t tag);
+bool lfs_tag_isvalid(lfs_tag_t tag);
+int8_t lfs_tag_splice(lfs_tag_t tag);
+uint16_t lfs_tag_type1(lfs_tag_t tag);
+// Calculate CRC-32 with polynomial = 0x04c11db7
+uint32_t lfs_crc(uint32_t crc, const void *buffer, size_t size);
+uint32_t lfs_frombe32(uint32_t a);
+uint32_t lfs_fromle32(uint32_t a);
+uint32_t lfs_min(uint32_t a, uint32_t b);
+int lfs_scmp(uint32_t a, uint32_t b);
+uint32_t lfs_tole32(uint32_t a);
 
 // static 
 lfs_stag_t lfs_dir_fetchmatch(lfs_t *lfs,

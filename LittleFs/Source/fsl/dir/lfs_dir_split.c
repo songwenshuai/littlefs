@@ -6,6 +6,15 @@
  */
 #include "lfs.h"
 
+int lfs_pair_cmp(
+        const lfs_block_t paira[2],
+        const lfs_block_t pairb[2]);
+void lfs_alloc_ack(lfs_t *lfs);
+int lfs_dir_alloc(lfs_t *lfs, lfs_mdir_t *dir);
+int lfs_dir_compact(lfs_t *lfs,
+        lfs_mdir_t *dir, const struct lfs_mattr *attrs, int attrcount,
+        lfs_mdir_t *source, uint16_t begin, uint16_t end);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_dir_split(lfs_t *lfs,

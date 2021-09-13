@@ -6,6 +6,8 @@
  */
 #include "lfs.h"
 
+uint32_t lfs_popc(uint32_t a);
+
 /// File index list operations ///
 // static 
 int lfs_ctz_index(lfs_t *lfs, lfs_off_t *off) {

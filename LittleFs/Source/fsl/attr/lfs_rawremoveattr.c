@@ -6,6 +6,9 @@
  */
 #include "lfs.h"
 
+int lfs_commitattr(lfs_t *lfs, const char *path,
+        uint8_t type, const void *buffer, lfs_size_t size);
+
 #ifndef LFS_READONLY
 // static 
 int lfs_rawremoveattr(lfs_t *lfs, const char *path, uint8_t type) {
