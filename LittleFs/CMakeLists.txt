@@ -2,7 +2,6 @@ target_sources(${PROJECT_NAME}
     PRIVATE
     # {{BEGIN_TARGET_SOURCES}}
     # ${CMAKE_CURRENT_LIST_DIR}/Port/littlefs_fal_port.c
-    ${CMAKE_CURRENT_LIST_DIR}/Port/littlefs_ram_port.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/api/lfs_dir_close.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/api/lfs_dir_open.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/api/lfs_dir_read.c
@@ -32,6 +31,9 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/Source/api/lfs_setattr.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/api/lfs_stat.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/api/lfs_unmount.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/app/count.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/app/dumplfs.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/app/mklfs.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/data/bd/lfs_bd_cmp.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/data/bd/lfs_bd_erase.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/data/bd/lfs_bd_flush.c
@@ -144,6 +146,7 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/Source/fsl/ioct/lfs_rawrename.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/fsl/ioct/lfs_rawstat.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/fsl/ioct/lfs_rawunmount.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/ram_port.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/util/lfs_aligndown.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/util/lfs_alignup.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/util/lfs_crc.c

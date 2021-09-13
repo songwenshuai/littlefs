@@ -35,9 +35,19 @@ typedef struct dumplfs_cfg {
     int32_t block_cycles;
 } dumplfs_cfg_t;
 
+typedef struct count_cfg {
+    lfs_size_t block_size; // Block size <block-size>
+    lfs_size_t read_size;  // Read size <read-size>
+    lfs_size_t prog_size;  // Prog size <prog-size>
+    lfs_size_t block_count;
+    lfs_size_t lookahead_size;
+    lfs_size_t cache_size;
+    int32_t block_cycles;
+} count_cfg_t;
+
 int mklfs(mklfs_cfg_t *mklfs_cfg);
 int dumplfs(dumplfs_cfg_t *dumplfs_cfg);
-void boot_count_test(void);
+void count(count_cfg_t *count_cfg);
 
 #ifdef __cplusplus
 } /* extern "C" */

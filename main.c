@@ -1,5 +1,5 @@
 #include "lfs.h"
-#include "littlefs_ram_port.h"
+#include "app.h"
 
 /*********************************************************************
 *
@@ -40,14 +40,13 @@ int main(int argc, char* argv[], char* envp[]) {
 #endif
 
 #if 0
-static dumplfs_cfg_t dumplfs_cfg;
 
 /*********************************************************************
 *
 *       main()
 */
 int main(int argc, char* argv[], char* envp[]) {
-  static mklfs_cfg_t mklfs_cfg;
+  static dumplfs_cfg_t dumplfs_cfg;
   dumplfs_cfg.src             = "./mklfs.img";
   dumplfs_cfg.dstdir          = "./dump/";
   dumplfs_cfg.block_size      = _BLOCK_SIZE_;
@@ -69,7 +68,15 @@ int main(int argc, char* argv[], char* envp[]) {
 *       main()
 */
 int main(int argc, char* argv[], char* envp[]) {
-  boot_count_test();
+  static count_cfg_t count_cfg;
+  count_cfg.block_size     = _BLOCK_SIZE_;
+  count_cfg.read_size      = _READ_SIZE_;
+  count_cfg.prog_size      = _PROG_SIZE_;
+  count_cfg.block_count    = 128;
+  count_cfg.lookahead_size = _LOOKAHEAD_MAX;
+  count_cfg.cache_size     = _CACHE_SIZE;
+  count_cfg.block_cycles   = _BLOCK_CYCLES;
+  count(&count_cfg);
   return (0);
 }
 #endif
