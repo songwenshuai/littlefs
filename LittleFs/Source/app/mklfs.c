@@ -4,6 +4,9 @@
  * Copyright (c) 2017, Arm Limited. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause
  */
+#if defined(__GNUC__)
+#define _GNU_SOURCE
+#endif
 #include "lfs.h"
 #include "app.h"
 
@@ -13,7 +16,19 @@
 #include <stdlib.h> /* needed for malloc, free */
 #include <stdarg.h> /* needed for va_*         */
 
+#include <ctype.h>
+#include <string.h>
+#include <limits.h>
+
+#if defined(__GNUC__)
+#include <unistd.h>
+#include </usr/include/dirent.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#endif
+
 #ifdef _MSC_VER
+#include <stdio.h>  /* needed for vsnprintf    */
 #include "dirent.h"
 #endif
 
