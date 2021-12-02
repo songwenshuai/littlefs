@@ -146,7 +146,12 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/Source/fsl/ioct/lfs_rawrename.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/fsl/ioct/lfs_rawstat.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/fsl/ioct/lfs_rawunmount.c
-    ${CMAKE_CURRENT_LIST_DIR}/Source/port/ram_port.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/lfs_erase.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/lfs_free.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/lfs_malloc.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/lfs_prog.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/lfs_read.c
+    ${CMAKE_CURRENT_LIST_DIR}/Source/port/lfs_sync.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/util/lfs_aligndown.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/util/lfs_alignup.c
     ${CMAKE_CURRENT_LIST_DIR}/Source/util/lfs_crc.c
@@ -168,6 +173,5 @@ target_sources(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} 
     PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/Inc
-    ${CMAKE_CURRENT_LIST_DIR}/Port
     ${CMAKE_CURRENT_LIST_DIR}/Source
 )
