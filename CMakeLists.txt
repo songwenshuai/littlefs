@@ -36,6 +36,10 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Pick up the common stuff
 add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/LittleFs)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/embOS)
+
+# Properties->Linker->Input->Additional Dependencies
+target_link_libraries(${PROJECT_NAME} embOSDP)
 
 # Set the directories that should be included in the build command for this target
 # when running g++ these will be included as -I/directory/path/
@@ -52,6 +56,3 @@ add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/LittleFs)
 #         "LargestIntegralType=unsigned long"
 #         LargestIntegralTypePrintfFormat="%llx"
 #         )
-
-# Properties->Linker->Input->Additional Dependencies
-# target_link_libraries (app  math)
