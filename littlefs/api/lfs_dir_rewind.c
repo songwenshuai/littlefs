@@ -13,11 +13,11 @@ int lfs_dir_rewind(lfs_t *lfs, lfs_dir_t *dir) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_dir_rewind(%p, %p)", (void*)lfs, (void*)dir);
+    LFS_WARN("lfs_dir_rewind(%p, %p)", (void*)lfs, (void*)dir);
 
     err = lfs_dir_rawrewind(lfs, dir);
 
-    LFS_TRACE("lfs_dir_rewind -> %d", err);
+    LFS_WARN("lfs_dir_rewind -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

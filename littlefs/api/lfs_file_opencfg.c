@@ -19,7 +19,7 @@ int lfs_file_opencfg(lfs_t *lfs, lfs_file_t *file,
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_file_opencfg(%p, %p, \"%s\", %x, %p {"
+    LFS_WARN("lfs_file_opencfg(%p, %p, \"%s\", %x, %p {"
                  ".buffer=%p, .attrs=%p, .attr_count=%"PRIu32"})",
             (void*)lfs, (void*)file, path, flags,
             (void*)cfg, cfg->buffer, (void*)cfg->attrs, cfg->attr_count);
@@ -27,7 +27,7 @@ int lfs_file_opencfg(lfs_t *lfs, lfs_file_t *file,
 
     err = lfs_file_rawopencfg(lfs, file, path, flags, cfg);
 
-    LFS_TRACE("lfs_file_opencfg -> %d", err);
+    LFS_WARN("lfs_file_opencfg -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

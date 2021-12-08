@@ -16,12 +16,12 @@ int lfs_setattr(lfs_t *lfs, const char *path,
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_setattr(%p, \"%s\", %"PRIu8", %p, %"PRIu32")",
+    LFS_WARN("lfs_setattr(%p, \"%s\", %"PRIu8", %p, %"PRIu32")",
             (void*)lfs, path, type, buffer, size);
 
     err = lfs_rawsetattr(lfs, path, type, buffer, size);
 
-    LFS_TRACE("lfs_setattr -> %d", err);
+    LFS_WARN("lfs_setattr -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

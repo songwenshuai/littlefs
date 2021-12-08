@@ -20,7 +20,7 @@ int lfs_erase(const struct lfs_config *c, lfs_block_t block) {
     LFS_ASSERT(c != NULL);
     LFS_ASSERT(c->context != NULL);
 
-    LFS_TRACE("lfs_erase(%p, 0x%"PRIx32")", (void*)c, block);
+    LFS_WARN("lfs_erase(%p, 0x%"PRIx32")", (void*)c, block);
 
     uint8_t *addr = NULL;
     addr = (uint8_t *)c->context;

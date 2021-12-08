@@ -13,7 +13,7 @@ int lfs_mount(lfs_t *lfs, const struct lfs_config *cfg) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_mount(%p, %p {.context=%p, "
+    LFS_WARN("lfs_mount(%p, %p {.context=%p, "
                 ".read=%p, .prog=%p, .erase=%p, .sync=%p, "
                 ".read_size=%"PRIu32", .prog_size=%"PRIu32", "
                 ".block_size=%"PRIu32", .block_count=%"PRIu32", "
@@ -32,7 +32,7 @@ int lfs_mount(lfs_t *lfs, const struct lfs_config *cfg) {
 
     err = lfs_rawmount(lfs, cfg);
 
-    LFS_TRACE("lfs_mount -> %d", err);
+    LFS_WARN("lfs_mount -> %d", err);
     LFS_UNLOCK(cfg);
     return err;
 }

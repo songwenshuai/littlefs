@@ -116,7 +116,7 @@ int lfs_ctz_extend(lfs_t *lfs,
         }
 
 relocate:
-        LFS_DEBUG("Bad block at 0x%"PRIx32, nblock);
+        LFS_WARN("Bad block at 0x%"PRIx32, nblock);
 
         // just clear cache and try a new block
         lfs_cache_drop(lfs, pcache);

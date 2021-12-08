@@ -10,18 +10,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// Users can override lfs_util.h with their own configuration by defining
-// LFS_CONFIG as a header file to include (-DLFS_CONFIG=lfs_config.h).
-//
-// If LFS_CONFIG is used, none of the default utils will be emitted and must be
-// provided by the config file. To start, I would suggest copying lfs_util.h
-// and modifying as needed.
-#ifdef LFS_CONFIG
-#define LFS_STRINGIZE(x) LFS_STRINGIZE2(x)
-#define LFS_STRINGIZE2(x) #x
-#include LFS_STRINGIZE(LFS_CONFIG)
-#else
-
 // System includes
 #include <string.h>
 #include <inttypes.h>
@@ -32,12 +20,10 @@
 #ifndef LFS_NO_ASSERT
 #include <assert.h>
 #endif
-#if !defined(LFS_NO_DEBUG) || \
-        !defined(LFS_NO_WARN) || \
-        !defined(LFS_NO_ERROR) || \
-        defined(LFS_YES_TRACE)
-#include <stdio.h>
-#endif
+
+#if !defined(LFS_NO_WARN) || \
+        !defined(LFS_NO_ERROR)
+#include "SEGGER_SYSVIEW.h"
 #endif
 
 #ifdef __cplusplus
@@ -65,32 +51,9 @@ extern "C"
 // macros must not have side-effects as the macros can be removed for a smaller
 // code footprint
 
-// Logging functions
-#ifndef LFS_TRACE
-#ifdef LFS_YES_TRACE
-#define LFS_TRACE_(fmt, ...) \
-    printf("%s:%d:trace: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
-#define LFS_TRACE(...) LFS_TRACE_(__VA_ARGS__, "")
-#else
-#define LFS_TRACE(...)
-#endif
-#endif
-
-#ifndef LFS_DEBUG
-#ifndef LFS_NO_DEBUG
-#define LFS_DEBUG_(fmt, ...) \
-    printf("%s:%d:debug: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
-#define LFS_DEBUG(...) LFS_DEBUG_(__VA_ARGS__, "")
-#else
-#define LFS_DEBUG(...)
-#endif
-#endif
-
 #ifndef LFS_WARN
 #ifndef LFS_NO_WARN
-#define LFS_WARN_(fmt, ...) \
-    printf("%s:%d:warn: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
-#define LFS_WARN(...) LFS_WARN_(__VA_ARGS__, "")
+#define LFS_WARN(...) SEGGER_SYSVIEW_WarnfHost(__VA_ARGS__)
 #else
 #define LFS_WARN(...)
 #endif
@@ -98,9 +61,7 @@ extern "C"
 
 #ifndef LFS_ERROR
 #ifndef LFS_NO_ERROR
-#define LFS_ERROR_(fmt, ...) \
-    printf("%s:%d:error: " fmt "%s\n", __FILE__, __LINE__, __VA_ARGS__)
-#define LFS_ERROR(...) LFS_ERROR_(__VA_ARGS__, "")
+#define LFS_ERROR(...) SEGGER_SYSVIEW_ErrorfHost(__VA_ARGS__)
 #else
 #define LFS_ERROR(...)
 #endif

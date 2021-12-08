@@ -14,11 +14,11 @@ int lfs_remove(lfs_t *lfs, const char *path) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_remove(%p, \"%s\")", (void*)lfs, path);
+    LFS_WARN("lfs_remove(%p, \"%s\")", (void*)lfs, path);
 
     err = lfs_rawremove(lfs, path);
 
-    LFS_TRACE("lfs_remove -> %d", err);
+    LFS_WARN("lfs_remove -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

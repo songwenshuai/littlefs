@@ -76,7 +76,7 @@ int lfs_fs_relocate(lfs_t *lfs,
         uint16_t moveid = 0x3ff;
         if (lfs_gstate_hasmovehere(&lfs->gstate, parent.pair)) {
             moveid = lfs_tag_id(lfs->gstate.tag);
-            LFS_DEBUG("Fixing move while relocating "
+            LFS_WARN("Fixing move while relocating "
                     "{0x%"PRIx32", 0x%"PRIx32"} 0x%"PRIx16"\n",
                     parent.pair[0], parent.pair[1], moveid);
             lfs_fs_prepmove(lfs, 0x3ff, NULL);
@@ -115,7 +115,7 @@ int lfs_fs_relocate(lfs_t *lfs,
         uint16_t moveid = 0x3ff;
         if (lfs_gstate_hasmovehere(&lfs->gstate, parent.pair)) {
             moveid = lfs_tag_id(lfs->gstate.tag);
-            LFS_DEBUG("Fixing move while relocating "
+            LFS_WARN("Fixing move while relocating "
                     "{0x%"PRIx32", 0x%"PRIx32"} 0x%"PRIx16"\n",
                     parent.pair[0], parent.pair[1], moveid);
             lfs_fs_prepmove(lfs, 0x3ff, NULL);

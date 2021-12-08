@@ -22,7 +22,7 @@ int lfs_prog(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, const
     LFS_ASSERT(c != NULL);
     LFS_ASSERT(c->context != NULL);
 
-    LFS_TRACE("lfs_prog(%p, 0x%"PRIx32", %"PRIu32", %p, %"PRIu32")",
+    LFS_WARN("lfs_prog(%p, 0x%"PRIx32", %"PRIu32", %p, %"PRIu32")",
             (void*)c, block, off, buffer, size);
 
     uint8_t *addr = NULL;

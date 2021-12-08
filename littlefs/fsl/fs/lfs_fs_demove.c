@@ -28,7 +28,7 @@ int lfs_fs_demove(lfs_t *lfs) {
     }
 
     // Fix bad moves
-    LFS_DEBUG("Fixing move {0x%"PRIx32", 0x%"PRIx32"} 0x%"PRIx16,
+    LFS_WARN("Fixing move {0x%"PRIx32", 0x%"PRIx32"} 0x%"PRIx16,
             lfs->gdisk.pair[0],
             lfs->gdisk.pair[1],
             lfs_tag_id(lfs->gdisk.tag));

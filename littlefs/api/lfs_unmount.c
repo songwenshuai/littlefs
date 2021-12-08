@@ -13,11 +13,11 @@ int lfs_unmount(lfs_t *lfs) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_unmount(%p)", (void*)lfs);
+    LFS_WARN("lfs_unmount(%p)", (void*)lfs);
 
     err = lfs_rawunmount(lfs);
 
-    LFS_TRACE("lfs_unmount -> %d", err);
+    LFS_WARN("lfs_unmount -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

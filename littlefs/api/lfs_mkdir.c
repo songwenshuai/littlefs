@@ -14,11 +14,11 @@ int lfs_mkdir(lfs_t *lfs, const char *path) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_mkdir(%p, \"%s\")", (void*)lfs, path);
+    LFS_WARN("lfs_mkdir(%p, \"%s\")", (void*)lfs, path);
 
     err = lfs_rawmkdir(lfs, path);
 
-    LFS_TRACE("lfs_mkdir -> %d", err);
+    LFS_WARN("lfs_mkdir -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

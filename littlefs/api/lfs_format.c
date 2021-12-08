@@ -15,7 +15,7 @@ int lfs_format(lfs_t *lfs, const struct lfs_config *cfg) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_format(%p, %p {.context=%p, "
+    LFS_WARN("lfs_format(%p, %p {.context=%p, "
                 ".read=%p, .prog=%p, .erase=%p, .sync=%p, "
                 ".read_size=%"PRIu32", .prog_size=%"PRIu32", "
                 ".block_size=%"PRIu32", .block_count=%"PRIu32", "
@@ -34,7 +34,7 @@ int lfs_format(lfs_t *lfs, const struct lfs_config *cfg) {
 
     err = lfs_rawformat(lfs, cfg);
 
-    LFS_TRACE("lfs_format -> %d", err);
+    LFS_WARN("lfs_format -> %d", err);
     LFS_UNLOCK(cfg);
     return err;
 }

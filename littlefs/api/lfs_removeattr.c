@@ -14,11 +14,11 @@ int lfs_removeattr(lfs_t *lfs, const char *path, uint8_t type) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_removeattr(%p, \"%s\", %"PRIu8")", (void*)lfs, path, type);
+    LFS_WARN("lfs_removeattr(%p, \"%s\", %"PRIu8")", (void*)lfs, path, type);
 
     err = lfs_rawremoveattr(lfs, path, type);
 
-    LFS_TRACE("lfs_removeattr -> %d", err);
+    LFS_WARN("lfs_removeattr -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

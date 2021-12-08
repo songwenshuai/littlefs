@@ -13,12 +13,12 @@ int lfs_dir_seek(lfs_t *lfs, lfs_dir_t *dir, lfs_off_t off) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_dir_seek(%p, %p, %"PRIu32")",
+    LFS_WARN("lfs_dir_seek(%p, %p, %"PRIu32")",
             (void*)lfs, (void*)dir, off);
 
     err = lfs_dir_rawseek(lfs, dir, off);
 
-    LFS_TRACE("lfs_dir_seek -> %d", err);
+    LFS_WARN("lfs_dir_seek -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

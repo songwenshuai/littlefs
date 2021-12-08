@@ -15,12 +15,12 @@ lfs_soff_t lfs_file_size(lfs_t *lfs, lfs_file_t *file) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_file_size(%p, %p)", (void*)lfs, (void*)file);
+    LFS_WARN("lfs_file_size(%p, %p)", (void*)lfs, (void*)file);
     LFS_ASSERT(lfs_mlist_isopen(lfs->mlist, (struct lfs_mlist*)file));
 
     lfs_soff_t res = lfs_file_rawsize(lfs, file);
 
-    LFS_TRACE("lfs_file_size -> %"PRId32, res);
+    LFS_WARN("lfs_file_size -> %"PRId32, res);
     LFS_UNLOCK(lfs->cfg);
     return res;
 }

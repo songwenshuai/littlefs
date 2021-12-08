@@ -134,7 +134,7 @@ int lfs_rawmount(lfs_t *lfs, const struct lfs_config *cfg) {
 
     // update littlefs with gstate
     if (!lfs_gstate_iszero(&lfs->gstate)) {
-        LFS_DEBUG("Found pending gstate 0x%08"PRIx32"%08"PRIx32"%08"PRIx32,
+        LFS_WARN("Found pending gstate 0x%08"PRIx32"%08"PRIx32"%08"PRIx32,
                 lfs->gstate.tag,
                 lfs->gstate.pair[0],
                 lfs->gstate.pair[1]);

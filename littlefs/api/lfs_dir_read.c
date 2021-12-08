@@ -13,12 +13,12 @@ int lfs_dir_read(lfs_t *lfs, lfs_dir_t *dir, struct lfs_info *info) {
     if (err) {
         return err;
     }
-    LFS_TRACE("lfs_dir_read(%p, %p, %p)",
+    LFS_WARN("lfs_dir_read(%p, %p, %p)",
             (void*)lfs, (void*)dir, (void*)info);
 
     err = lfs_dir_rawread(lfs, dir, info);
 
-    LFS_TRACE("lfs_dir_read -> %d", err);
+    LFS_WARN("lfs_dir_read -> %d", err);
     LFS_UNLOCK(lfs->cfg);
     return err;
 }

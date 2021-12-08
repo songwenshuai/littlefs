@@ -22,7 +22,7 @@ int lfs_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, void 
     LFS_ASSERT(c != NULL);
     LFS_ASSERT(c->context != NULL);
 
-    LFS_TRACE("lfs_read(%p, 0x%"PRIx32", %"PRIu32", %p, %"PRIu32")",
+    LFS_WARN("lfs_read(%p, 0x%"PRIx32", %"PRIu32", %p, %"PRIu32")",
             (void*)c, block, off, buffer, size);
 
     uint8_t *addr = NULL;

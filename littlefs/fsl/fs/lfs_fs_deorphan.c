@@ -59,7 +59,7 @@ int lfs_fs_deorphan(lfs_t *lfs) {
 
             if (tag == LFS_ERR_NOENT) {
                 // we are an orphan
-                LFS_DEBUG("Fixing orphan {0x%"PRIx32", 0x%"PRIx32"}",
+                LFS_WARN("Fixing orphan {0x%"PRIx32", 0x%"PRIx32"}",
                         pdir.tail[0], pdir.tail[1]);
 
                 err = lfs_dir_drop(lfs, &pdir, &dir);
@@ -81,7 +81,7 @@ int lfs_fs_deorphan(lfs_t *lfs) {
 
             if (!lfs_pair_sync(pair, pdir.tail)) {
                 // we have desynced
-                LFS_DEBUG("Fixing half-orphan {0x%"PRIx32", 0x%"PRIx32"} "
+                LFS_WARN("Fixing half-orphan {0x%"PRIx32", 0x%"PRIx32"} "
                             "-> {0x%"PRIx32", 0x%"PRIx32"}",
                         pdir.tail[0], pdir.tail[1], pair[0], pair[1]);
 

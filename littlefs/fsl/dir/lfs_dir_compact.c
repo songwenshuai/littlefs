@@ -123,7 +123,7 @@ int lfs_dir_compact(lfs_t *lfs,
             // do we have extra space? littlefs can't reclaim this space
             // by itself, so expand cautiously
             if ((lfs_size_t)res < lfs->cfg->block_count/2) {
-                LFS_DEBUG("Expanding superblock at rev %"PRIu32, dir->rev);
+                LFS_WARN("Expanding superblock at rev %"PRIu32, dir->rev);
                 int err = lfs_dir_split(lfs, dir, attrs, attrcount,
                         source, begin, end);
                 if (err && err != LFS_ERR_NOSPC) {
@@ -264,12 +264,12 @@ relocate:
         relocated = true;
         lfs_cache_drop(lfs, &lfs->pcache);
         if (!tired) {
-            LFS_DEBUG("Bad block at 0x%"PRIx32, dir->pair[1]);
+            LFS_WARN("Bad block at 0x%"PRIx32, dir->pair[1]);
         }
 
         // can't relocate superblock, filesystem is now frozen
         if (lfs_pair_cmp(dir->pair, (const lfs_block_t[2]){0, 1}) == 0) {
-            LFS_WARN("Superblock 0x%"PRIx32" has become unwritable",
+            LFS_ERROR("Superblock 0x%"PRIx32" has become unwritable",
                     dir->pair[1]);
             return LFS_ERR_NOSPC;
         }
@@ -286,7 +286,7 @@ relocate:
 
     if (relocated) {
         // update references if we relocated
-        LFS_DEBUG("Relocating {0x%"PRIx32", 0x%"PRIx32"} "
+        LFS_WARN("Relocating {0x%"PRIx32", 0x%"PRIx32"} "
                     "-> {0x%"PRIx32", 0x%"PRIx32"}",
                 oldpair[0], oldpair[1], dir->pair[0], dir->pair[1]);
         int err = lfs_fs_relocate(lfs, oldpair, dir->pair);

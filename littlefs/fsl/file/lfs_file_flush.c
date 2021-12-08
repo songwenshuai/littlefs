@@ -77,7 +77,7 @@ int lfs_file_flush(lfs_t *lfs, lfs_file_t *file) {
                 break;
 
 relocate:
-                LFS_DEBUG("Bad block at 0x%"PRIx32, file->block);
+                LFS_WARN("Bad block at 0x%"PRIx32, file->block);
                 err = lfs_file_relocate(lfs, file);
                 if (err) {
                     return err;
