@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="app">
+      <UniqueIdentifier>{ab8d1b74-81fe-4faa-95b0-be1864d0af38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs">
+      <UniqueIdentifier>{aca6f92d-87b4-4b80-aea7-94ea2120359a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\api">
+      <UniqueIdentifier>{2287f924-ef24-4f7d-a701-351f47b88625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data">
+      <UniqueIdentifier>{3a434dae-60fd-4d54-b980-57116af3d190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl">
+      <UniqueIdentifier>{15c23acf-cb1f-48e5-ad1f-51e41c009ff0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\os">
+      <UniqueIdentifier>{3a164bf5-3318-4ca1-9c8e-9bd02036ab1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\port">
+      <UniqueIdentifier>{5de8d09a-476b-4cab-8fce-4ec9581b2a64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\util">
+      <UniqueIdentifier>{92a22868-26ce-4877-b514-7a2ff3f54fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\bd">
+      <UniqueIdentifier>{4b1650ec-3058-4b07-9da0-b20e4cfdf0cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\cache">
+      <UniqueIdentifier>{fdd30027-3c10-4449-8e47-649545455514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\ctz">
+      <UniqueIdentifier>{53300c91-47c2-443e-b026-6443c0b87502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\gstate">
+      <UniqueIdentifier>{0b19d06f-70e1-4d15-b97c-c2970e0af1bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\mlist">
+      <UniqueIdentifier>{fb16df3b-ac19-4f13-9493-cbd45ee3c617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\pair">
+      <UniqueIdentifier>{c76d4160-84f8-40fa-898a-671cd061c920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\sblock">
+      <UniqueIdentifier>{0ca9f1ac-0fe1-4751-af9a-3643ec6eb9a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\data\tag">
+      <UniqueIdentifier>{9068fbbd-204c-439f-9622-75fe61cb34be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\alloc">
+      <UniqueIdentifier>{f92b31e1-b193-4736-81fa-c9c077261490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\attr">
+      <UniqueIdentifier>{9f4515a9-0d55-4749-8934-854277e13a51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\dir">
+      <UniqueIdentifier>{c553e2c5-fb4e-472a-b41b-c2d89daa0d90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\file">
+      <UniqueIdentifier>{7240908b-b54c-4d35-a399-d50ec62ea0c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\fs">
+      <UniqueIdentifier>{f27ca56c-3da1-42f1-83d4-491458ef3f6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\init">
+      <UniqueIdentifier>{548f4b00-d663-460e-906f-ebca4969fa02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\fsl\ioct">
+      <UniqueIdentifier>{9b73bf66-6f92-4a1d-b810-ebee60a70bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\os\trace">
+      <UniqueIdentifier>{b1286af2-cc6b-44ac-9f11-304a65e259af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\os\setup">
+      <UniqueIdentifier>{82cb7561-5b17-4843-9c3b-4764668949fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\os\lib">
+      <UniqueIdentifier>{fc191cc0-5c76-49f6-bcb0-212edcf14013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="littlefs\inc">
+      <UniqueIdentifier>{fc14f650-0e22-4e59-ac3e-0dc30bdd69c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="app\count.c">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="app\dumplfs.c">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="app\main.c">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="app\mklfs.c">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="app\OS_Mutexes.c">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_dir_close.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_dir_open.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_dir_read.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_dir_rewind.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_dir_seek.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_dir_tell.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_close.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_open.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_opencfg.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_read.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_rewind.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_seek.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_size.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_sync.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_tell.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_truncate.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_file_write.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_format.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_fs_size.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_fs_traverse.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_getattr.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_mkdir.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_mount.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_remove.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_removeattr.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_rename.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_setattr.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_stat.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\api\lfs_unmount.c">
+      <Filter>littlefs\api</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\bd\lfs_bd_cmp.c">
+      <Filter>littlefs\data\bd</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\bd\lfs_bd_erase.c">
+      <Filter>littlefs\data\bd</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\bd\lfs_bd_flush.c">
+      <Filter>littlefs\data\bd</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\bd\lfs_bd_prog.c">
+      <Filter>littlefs\data\bd</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\bd\lfs_bd_read.c">
+      <Filter>littlefs\data\bd</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\bd\lfs_bd_sync.c">
+      <Filter>littlefs\data\bd</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\cache\lfs_cache_drop.c">
+      <Filter>littlefs\data\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\cache\lfs_cache_zero.c">
+      <Filter>littlefs\data\cache</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_extend.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_find.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_fromle32.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_index.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_tole32.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_traverse.c">
+      <Filter>littlefs\data\ctz</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_fromle32.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_getorphans.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_hasmove.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_hasmovehere.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_hasorphans.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_iszero.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_tole32.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_xor.c">
+      <Filter>littlefs\data\gstate</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\mlist\lfs_mlist_append.c">
+      <Filter>littlefs\data\mlist</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\mlist\lfs_mlist_isopen.c">
+      <Filter>littlefs\data\mlist</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\mlist\lfs_mlist_remove.c">
+      <Filter>littlefs\data\mlist</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_chunk.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_dsize.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_id.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_isdelete.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_isvalid.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_size.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_splice.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_type1.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\tag\lfs_tag_type3.c">
+      <Filter>littlefs\data\tag</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\sblock\lfs_superblock_fromle32.c">
+      <Filter>littlefs\data\sblock</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\sblock\lfs_superblock_tole32.c">
+      <Filter>littlefs\data\sblock</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\pair\lfs_pair_cmp.c">
+      <Filter>littlefs\data\pair</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\pair\lfs_pair_fromle32.c">
+      <Filter>littlefs\data\pair</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\pair\lfs_pair_isnull.c">
+      <Filter>littlefs\data\pair</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\pair\lfs_pair_swap.c">
+      <Filter>littlefs\data\pair</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\data\pair\lfs_pair_sync.c">
+      <Filter>littlefs\data\pair</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc.c">
+      <Filter>littlefs\fsl\alloc</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc_ack.c">
+      <Filter>littlefs\fsl\alloc</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc_drop.c">
+      <Filter>littlefs\fsl\alloc</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc_lookahead.c">
+      <Filter>littlefs\fsl\alloc</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\attr\lfs_commitattr.c">
+      <Filter>littlefs\fsl\attr</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\attr\lfs_rawgetattr.c">
+      <Filter>littlefs\fsl\attr</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\attr\lfs_rawremoveattr.c">
+      <Filter>littlefs\fsl\attr</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\attr\lfs_rawsetattr.c">
+      <Filter>littlefs\fsl\attr</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_alloc.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commit.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commit_commit.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commit_size.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commitattr.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commitcrc.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commitprog.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_compact.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_drop.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_fetch.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_fetchmatch.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_find.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_find_match.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_get.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getgstate.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getinfo.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getread.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getslice.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawclose.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawopen.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawread.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawrewind.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawseek.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawtell.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_split.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_traverse.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_traverse_filter.c">
+      <Filter>littlefs\fsl\dir</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_flush.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_outline.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawclose.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawopen.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawopencfg.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawread.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawrewind.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawseek.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawsize.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawsync.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawtell.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawtruncate.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawwrite.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\file\lfs_file_relocate.c">
+      <Filter>littlefs\fsl\file</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_demove.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_deorphan.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_forceconsistency.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_parent.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_parent_match.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_pred.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_prepmove.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_preporphans.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_rawsize.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_rawtraverse.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_relocate.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_size_count.c">
+      <Filter>littlefs\fsl\fs</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\init\lfs_deinit.c">
+      <Filter>littlefs\fsl\init</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\init\lfs_init.c">
+      <Filter>littlefs\fsl\init</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawformat.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawmkdir.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawmount.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawremove.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawrename.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawstat.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawunmount.c">
+      <Filter>littlefs\fsl\ioct</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_aligndown.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_alignup.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_crc.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_frombe32.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_fromle32.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_max.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_min.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_npw2.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_pair_tole32.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_popc.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_scmp.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_tobe32.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\util\lfs_tole32.c">
+      <Filter>littlefs\util</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\port\lfs_erase.c">
+      <Filter>littlefs\port</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\port\lfs_free.c">
+      <Filter>littlefs\port</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\port\lfs_malloc.c">
+      <Filter>littlefs\port</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\port\lfs_prog.c">
+      <Filter>littlefs\port</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\port\lfs_read.c">
+      <Filter>littlefs\port</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\port\lfs_sync.c">
+      <Filter>littlefs\port</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\setup\OS_Error.c">
+      <Filter>littlefs\os\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\setup\RTOSInit.c">
+      <Filter>littlefs\os\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\setup\UDP_Sim_Process.c">
+      <Filter>littlefs\os\setup</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_RTT.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_RTT_printf.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW_Config_embOS_Win32.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW_embOS.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="littlefs\os\trace\SEGGER.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_RTT.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_RTT_Conf.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_Conf.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_ConfDefaults.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_embOS.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_Int.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_Win32.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\app.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\dirent.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\Global.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\lfs.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\OS_Config.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\RTOS.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\inc\UDPCOM.h">
+      <Filter>littlefs\inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="littlefs\os\lib\embOSDP.lib">
+      <Filter>littlefs\os\lib</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

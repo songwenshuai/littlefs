@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <ProjectGuid>{841127D3-EC5D-4EEA-9FDD-CB2208F6F5CB}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\output\Release\</OutDir>
+    <IntDir>.\output\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\output\debug\</OutDir>
+    <IntDir>.\output\debug\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\..\Inc;Win32;SEGGER;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\output\Release\</AssemblerListingLocation>
+      <PrecompiledHeaderOutputFile>.\output\Release\start.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\output\Release\</ObjectFileName>
+      <ProgramDataBaseFileName>.\output\Release\</ProgramDataBaseFileName>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\output\Release\start.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\output\Release\start.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>.\output\Release\start.exe</OutputFile>
+      <AdditionalDependencies>winmm.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <AdditionalIncludeDirectories>littlefs\inc;littlefs\os\trace;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDOWS;WIN32;_DEBUG;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\output\debug\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\output\debug\start.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\output\debug\</ObjectFileName>
+      <ProgramDataBaseFileName>.\output\debug\</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\output\debug\start.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\output\debug\start.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\output\debug\start.exe</OutputFile>
+      <AdditionalDependencies>winmm.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="app\count.c" />
+    <ClCompile Include="app\dumplfs.c" />
+    <ClCompile Include="app\main.c" />
+    <ClCompile Include="app\mklfs.c" />
+    <ClCompile Include="app\OS_Mutexes.c" />
+    <ClCompile Include="littlefs\api\lfs_dir_close.c" />
+    <ClCompile Include="littlefs\api\lfs_dir_open.c" />
+    <ClCompile Include="littlefs\api\lfs_dir_read.c" />
+    <ClCompile Include="littlefs\api\lfs_dir_rewind.c" />
+    <ClCompile Include="littlefs\api\lfs_dir_seek.c" />
+    <ClCompile Include="littlefs\api\lfs_dir_tell.c" />
+    <ClCompile Include="littlefs\api\lfs_file_close.c" />
+    <ClCompile Include="littlefs\api\lfs_file_open.c" />
+    <ClCompile Include="littlefs\api\lfs_file_opencfg.c" />
+    <ClCompile Include="littlefs\api\lfs_file_read.c" />
+    <ClCompile Include="littlefs\api\lfs_file_rewind.c" />
+    <ClCompile Include="littlefs\api\lfs_file_seek.c" />
+    <ClCompile Include="littlefs\api\lfs_file_size.c" />
+    <ClCompile Include="littlefs\api\lfs_file_sync.c" />
+    <ClCompile Include="littlefs\api\lfs_file_tell.c" />
+    <ClCompile Include="littlefs\api\lfs_file_truncate.c" />
+    <ClCompile Include="littlefs\api\lfs_file_write.c" />
+    <ClCompile Include="littlefs\api\lfs_format.c" />
+    <ClCompile Include="littlefs\api\lfs_fs_size.c" />
+    <ClCompile Include="littlefs\api\lfs_fs_traverse.c" />
+    <ClCompile Include="littlefs\api\lfs_getattr.c" />
+    <ClCompile Include="littlefs\api\lfs_mkdir.c" />
+    <ClCompile Include="littlefs\api\lfs_mount.c" />
+    <ClCompile Include="littlefs\api\lfs_remove.c" />
+    <ClCompile Include="littlefs\api\lfs_removeattr.c" />
+    <ClCompile Include="littlefs\api\lfs_rename.c" />
+    <ClCompile Include="littlefs\api\lfs_setattr.c" />
+    <ClCompile Include="littlefs\api\lfs_stat.c" />
+    <ClCompile Include="littlefs\api\lfs_unmount.c" />
+    <ClCompile Include="littlefs\data\bd\lfs_bd_cmp.c" />
+    <ClCompile Include="littlefs\data\bd\lfs_bd_erase.c" />
+    <ClCompile Include="littlefs\data\bd\lfs_bd_flush.c" />
+    <ClCompile Include="littlefs\data\bd\lfs_bd_prog.c" />
+    <ClCompile Include="littlefs\data\bd\lfs_bd_read.c" />
+    <ClCompile Include="littlefs\data\bd\lfs_bd_sync.c" />
+    <ClCompile Include="littlefs\data\cache\lfs_cache_drop.c" />
+    <ClCompile Include="littlefs\data\cache\lfs_cache_zero.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_extend.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_find.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_fromle32.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_index.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_tole32.c" />
+    <ClCompile Include="littlefs\data\ctz\lfs_ctz_traverse.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_fromle32.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_getorphans.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_hasmove.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_hasmovehere.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_hasorphans.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_iszero.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_tole32.c" />
+    <ClCompile Include="littlefs\data\gstate\lfs_gstate_xor.c" />
+    <ClCompile Include="littlefs\data\mlist\lfs_mlist_append.c" />
+    <ClCompile Include="littlefs\data\mlist\lfs_mlist_isopen.c" />
+    <ClCompile Include="littlefs\data\mlist\lfs_mlist_remove.c" />
+    <ClCompile Include="littlefs\data\pair\lfs_pair_cmp.c" />
+    <ClCompile Include="littlefs\data\pair\lfs_pair_fromle32.c" />
+    <ClCompile Include="littlefs\data\pair\lfs_pair_isnull.c" />
+    <ClCompile Include="littlefs\data\pair\lfs_pair_swap.c" />
+    <ClCompile Include="littlefs\data\pair\lfs_pair_sync.c" />
+    <ClCompile Include="littlefs\data\sblock\lfs_superblock_fromle32.c" />
+    <ClCompile Include="littlefs\data\sblock\lfs_superblock_tole32.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_chunk.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_dsize.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_id.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_isdelete.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_isvalid.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_size.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_splice.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_type1.c" />
+    <ClCompile Include="littlefs\data\tag\lfs_tag_type3.c" />
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc.c" />
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc_ack.c" />
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc_drop.c" />
+    <ClCompile Include="littlefs\fsl\alloc\lfs_alloc_lookahead.c" />
+    <ClCompile Include="littlefs\fsl\attr\lfs_commitattr.c" />
+    <ClCompile Include="littlefs\fsl\attr\lfs_rawgetattr.c" />
+    <ClCompile Include="littlefs\fsl\attr\lfs_rawremoveattr.c" />
+    <ClCompile Include="littlefs\fsl\attr\lfs_rawsetattr.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_alloc.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commit.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commitattr.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commitcrc.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commitprog.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commit_commit.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_commit_size.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_compact.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_drop.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_fetch.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_fetchmatch.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_find.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_find_match.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_get.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getgstate.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getinfo.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getread.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_getslice.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawclose.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawopen.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawread.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawrewind.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawseek.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_rawtell.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_split.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_traverse.c" />
+    <ClCompile Include="littlefs\fsl\dir\lfs_dir_traverse_filter.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_flush.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_outline.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawclose.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawopen.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawopencfg.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawread.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawrewind.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawseek.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawsize.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawsync.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawtell.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawtruncate.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_rawwrite.c" />
+    <ClCompile Include="littlefs\fsl\file\lfs_file_relocate.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_demove.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_deorphan.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_forceconsistency.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_parent.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_parent_match.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_pred.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_prepmove.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_preporphans.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_rawsize.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_rawtraverse.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_relocate.c" />
+    <ClCompile Include="littlefs\fsl\fs\lfs_fs_size_count.c" />
+    <ClCompile Include="littlefs\fsl\init\lfs_deinit.c" />
+    <ClCompile Include="littlefs\fsl\init\lfs_init.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawformat.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawmkdir.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawmount.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawremove.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawrename.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawstat.c" />
+    <ClCompile Include="littlefs\fsl\ioct\lfs_rawunmount.c" />
+    <ClCompile Include="littlefs\os\setup\OS_Error.c" />
+    <ClCompile Include="littlefs\os\setup\RTOSInit.c" />
+    <ClCompile Include="littlefs\os\setup\UDP_Sim_Process.c" />
+    <ClCompile Include="littlefs\os\trace\SEGGER_RTT.c" />
+    <ClCompile Include="littlefs\os\trace\SEGGER_RTT_printf.c" />
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW.c" />
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW_Config_embOS_Win32.c" />
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW_embOS.c" />
+    <ClCompile Include="littlefs\port\lfs_erase.c" />
+    <ClCompile Include="littlefs\port\lfs_free.c" />
+    <ClCompile Include="littlefs\port\lfs_malloc.c" />
+    <ClCompile Include="littlefs\port\lfs_prog.c" />
+    <ClCompile Include="littlefs\port\lfs_read.c" />
+    <ClCompile Include="littlefs\port\lfs_sync.c" />
+    <ClCompile Include="littlefs\util\lfs_aligndown.c" />
+    <ClCompile Include="littlefs\util\lfs_alignup.c" />
+    <ClCompile Include="littlefs\util\lfs_crc.c" />
+    <ClCompile Include="littlefs\util\lfs_frombe32.c" />
+    <ClCompile Include="littlefs\util\lfs_fromle32.c" />
+    <ClCompile Include="littlefs\util\lfs_max.c" />
+    <ClCompile Include="littlefs\util\lfs_min.c" />
+    <ClCompile Include="littlefs\util\lfs_npw2.c" />
+    <ClCompile Include="littlefs\util\lfs_pair_tole32.c" />
+    <ClCompile Include="littlefs\util\lfs_popc.c" />
+    <ClCompile Include="littlefs\util\lfs_scmp.c" />
+    <ClCompile Include="littlefs\util\lfs_tobe32.c" />
+    <ClCompile Include="littlefs\util\lfs_tole32.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="littlefs\inc\app.h" />
+    <ClInclude Include="littlefs\inc\dirent.h" />
+    <ClInclude Include="littlefs\inc\Global.h" />
+    <ClInclude Include="littlefs\inc\lfs.h" />
+    <ClInclude Include="littlefs\inc\OS_Config.h" />
+    <ClInclude Include="littlefs\inc\RTOS.h" />
+    <ClInclude Include="littlefs\inc\UDPCOM.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_RTT.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_RTT_Conf.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_Conf.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_ConfDefaults.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_embOS.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_Int.h" />
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYSVIEW_Win32.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="littlefs\os\lib\embOSDP.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

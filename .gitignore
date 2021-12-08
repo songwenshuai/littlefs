@@ -53,3 +53,7 @@ dkms.conf
 
 # CMake
 build/
+output/
+.vs/
+start.vcxproj.user
+start.sln
