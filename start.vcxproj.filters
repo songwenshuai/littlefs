@@ -603,6 +603,33 @@
     <ClCompile Include="littlefs\os\trace\SEGGER_SYSVIEW_embOS.c">
       <Filter>littlefs\os\trace</Filter>
     </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_MEM.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SHELL.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYS.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYS_IO.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYS_IO_Win32.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYS_OS_Win32.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_SYS_Win32.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_String.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
+    <ClCompile Include="littlefs\os\trace\SEGGER_MEM_SYSTEM_HEAP.c">
+      <Filter>littlefs\os\trace</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="littlefs\os\trace\SEGGER.h">
@@ -652,6 +679,21 @@
     </ClInclude>
     <ClInclude Include="littlefs\inc\UDPCOM.h">
       <Filter>littlefs\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_MEM.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SHELL.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_SYS.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_MEM_Conf.h">
+      <Filter>littlefs\os\trace</Filter>
+    </ClInclude>
+    <ClInclude Include="littlefs\os\trace\SEGGER_MEM_ConfDefaults.h">
+      <Filter>littlefs\os\trace</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
