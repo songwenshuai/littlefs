@@ -12,7 +12,6 @@
 #endif
 
 #include "lfs.h"
-#include "app.h"
 
 #include <errno.h>
 
@@ -36,10 +35,54 @@
 #include "dirent.h"
 #endif
 
-int lfs_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, void *buffer, lfs_size_t size);
-int lfs_prog(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, const void *buffer, lfs_size_t size);
-int lfs_erase(const struct lfs_config *c, lfs_block_t block);
-int lfs_sync(const struct lfs_config *c);
+/*********************************************************************
+*
+*       define
+*/
+
+#define _PROG_SIZE_     256
+#define _READ_SIZE_     256
+#define _CACHE_SIZE     _PROG_SIZE_
+#define _BLOCK_SIZE_    4096
+
+#define _LOOKAHEAD_MAX  128
+#define _FS_SIZE_       16777216    // 16 MB
+#define _BLOCK_CYCLES   (-1)
+
+typedef struct lfs_cfg {
+    char *src;               // Source directory <pack-dir>
+    char *dst;               // Destination image <image-file-path>
+    int fs_size;             // File system size <filesystem-size>
+    lfs_size_t block_size;   // Block size <block-size>
+    lfs_size_t prog_size;    // Prog size <prog-size>
+    lfs_size_t read_size;    // Read size <read-size>
+    lfs_size_t lookahead_size;
+    lfs_size_t cache_size;
+    int32_t block_cycles;
+} lfs_cfg_t;
+
+int mklfs(lfs_cfg_t *mklfs_cfg);
+
+/*********************************************************************
+*
+*       main_mklfs()
+*/
+int main_mklfs(int argc, char* argv[], char* envp[]) {
+  static lfs_cfg_t mklfs_cfg;
+  mklfs_cfg.src             = "./";
+  mklfs_cfg.dst             = "./mklfs.img";
+  mklfs_cfg.block_size      = _BLOCK_SIZE_;
+  mklfs_cfg.prog_size       = _PROG_SIZE_;
+  mklfs_cfg.read_size       = _READ_SIZE_;
+  mklfs_cfg.cache_size      = _CACHE_SIZE;
+  mklfs_cfg.block_cycles    = _BLOCK_CYCLES;
+  mklfs_cfg.lookahead_size  = _LOOKAHEAD_MAX;
+  mklfs_cfg.fs_size         = _FS_SIZE_;
+
+  mklfs(&mklfs_cfg);
+
+  return (0);
+}
 
 static void create_dir(lfs_t *lfs, char *src) {
     char *path;
@@ -76,6 +119,11 @@ static void create_file(lfs_t *lfs, char *src) {
         lfs_file_t dstf;
         if ((ret = lfs_file_open(lfs, &dstf, path, LFS_O_WRONLY | LFS_O_CREAT)) < 0) {
             fprintf(stderr,"can't open destination file %s: error=%d\r\n", path, ret);
+            exit(1);
+        }
+
+        if ((ret = lfs_file_rewind(lfs, &dstf)) <0) {
+            fprintf(stderr,"can't rewind destination file %s: error=%d\r\n", path, ret);
             exit(1);
         }
 
@@ -130,13 +178,17 @@ static void compact(lfs_t *lfs, char *src) {
     }
 }
 
-int mklfs(mklfs_cfg_t *mklfs_cfg) {
+int mklfs(lfs_cfg_t *mklfs_cfg) {
 	static struct lfs_config cfg;
 	static lfs_t lfs;
     int err;
 
-    if ((mklfs_cfg->src == NULL) || (mklfs_cfg->dst == NULL) || (mklfs_cfg->block_size <= 0) || (mklfs_cfg->prog_size <= 0) ||
-        (mklfs_cfg->read_size <= 0) || (mklfs_cfg->fs_size <= 0)) {
+    if ((mklfs_cfg->src == NULL)     || 
+        (mklfs_cfg->dst == NULL)     || 
+        (mklfs_cfg->block_size <= 0) || 
+        (mklfs_cfg->prog_size  <= 0) ||
+        (mklfs_cfg->read_size  <= 0) || 
+        (mklfs_cfg->fs_size    <= 0)) {
         fprintf(stderr, "parameter cannot be null\r\n");
         exit(1);
     }
@@ -186,6 +238,13 @@ int mklfs(mklfs_cfg_t *mklfs_cfg) {
 	fwrite(cfg.context, 1, mklfs_cfg->fs_size, img);
 
 	fclose(img);
+
+    // release any resources we were using
+    err = lfs_unmount(&lfs);
+	if (err < 0) {
+		fprintf(stderr, "unmount error: error=%d\r\n", err);
+		return -1;
+	}
 
 	return 0;
 }

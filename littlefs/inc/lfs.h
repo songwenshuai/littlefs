@@ -31,6 +31,8 @@ extern "C"
 {
 #endif
 
+#define LFS_THREADSAFE
+
 /// Version info ///
 
 // Software library version
@@ -788,6 +790,14 @@ lfs_ssize_t lfs_fs_size(lfs_t *lfs);
 //
 // Returns a negative error code on failure.
 int lfs_fs_traverse(lfs_t *lfs, int (*cb)(void*, lfs_block_t), void *data);
+
+//
+// port
+//
+int lfs_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, void *buffer, lfs_size_t size);
+int lfs_prog(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, const void *buffer, lfs_size_t size);
+int lfs_erase(const struct lfs_config *c, lfs_block_t block);
+int lfs_sync(const struct lfs_config *c);
 
 #ifdef __cplusplus
 } /* extern "C" */

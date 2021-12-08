@@ -29,7 +29,7 @@ int lfs_dir_getinfo(lfs_t *lfs, lfs_mdir_t *dir,
         return (int)tag;
     }
 
-    info->type = lfs_tag_type3(tag);
+    info->type = (uint8_t)lfs_tag_type3(tag);
 
     struct lfs_ctz ctz;
     tag = lfs_dir_get(lfs, dir, LFS_MKTAG(0x700, 0x3ff, 0),

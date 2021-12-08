@@ -11,7 +11,6 @@
 #pragma warning(disable:5105)
 #endif
 #include "lfs.h"
-#include "app.h"
 
 #include <errno.h>
 
@@ -32,13 +31,58 @@
 
 #ifdef _MSC_VER
 #include <stdio.h>  /* needed for vsnprintf    */
+#include <direct.h>
 #include "dirent.h"
 #endif
 
-int lfs_read(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, void *buffer, lfs_size_t size);
-int lfs_prog(const struct lfs_config *c, lfs_block_t block, lfs_off_t off, const void *buffer, lfs_size_t size);
-int lfs_erase(const struct lfs_config *c, lfs_block_t block);
-int lfs_sync(const struct lfs_config *c);
+/*********************************************************************
+*
+*       define
+*/
+
+#define _PROG_SIZE_     256
+#define _READ_SIZE_     256
+#define _CACHE_SIZE     _PROG_SIZE_
+#define _BLOCK_SIZE_    4096
+
+#define _LOOKAHEAD_MAX  128
+#define _FS_SIZE_       16777216    // 16 MB
+#define _BLOCK_CYCLES   (-1)
+
+typedef struct lfs_cfg {
+    char *src;             // Source image <image-file-path>
+    char *dst;             // Destination directory <output-dir>
+	int fs_size;           // File system size <filesystem-size>
+    lfs_size_t block_size; // Block size <block-size>
+    lfs_size_t prog_size;  // Prog size <prog-size>
+    lfs_size_t read_size;  // Read size <read-size>
+    lfs_size_t lookahead_size;
+    lfs_size_t cache_size;
+    int32_t block_cycles;
+} lfs_cfg_t;
+
+int dumplfs(lfs_cfg_t *dumplfs_cfg);
+
+/*********************************************************************
+*
+*       main_dumplfs()
+*/
+int main_dumplfs(int argc, char* argv[], char* envp[]) {
+  static lfs_cfg_t dumplfs_cfg;
+  dumplfs_cfg.src             = "./mklfs.img";
+  dumplfs_cfg.dst             = "./dump/";
+  dumplfs_cfg.fs_size         = 0;
+  dumplfs_cfg.block_size      = _BLOCK_SIZE_;
+  dumplfs_cfg.prog_size       = _PROG_SIZE_;
+  dumplfs_cfg.read_size       = _READ_SIZE_;
+  dumplfs_cfg.cache_size      = _CACHE_SIZE;
+  dumplfs_cfg.block_cycles    = _BLOCK_CYCLES;
+  dumplfs_cfg.lookahead_size  = _LOOKAHEAD_MAX;
+
+  dumplfs(&dumplfs_cfg);
+
+  return (0);
+}
 
 /*
  * vscprintf:
@@ -167,7 +211,11 @@ static int dump_dir(lfs_t *lfs, const char *srcpath, const char  *dstpath) {
 
 		switch (dir_info.type) {
 		case LFS_TYPE_DIR:
+			#ifdef _MSC_VER
+			_mkdir(new_dstpath);
+			#else
 			mkdir(new_dstpath, 0777 );
+			#endif
 			status = dump_dir(lfs, new_srcpath, new_dstpath);
 		    break;
 		case LFS_TYPE_REG:
@@ -186,14 +234,12 @@ alloc_err:
 	return status;
 }
 
-int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
+int dumplfs(lfs_cfg_t *dumplfs_cfg) {
 	static struct lfs_config cfg;
 	static lfs_t lfs;
-    int c;              // Current option
-    int fs_size = 0;    // File system size
     int err;
 
-    if ((dumplfs_cfg->src == NULL) || (dumplfs_cfg->dstdir == NULL) || (dumplfs_cfg->block_size <= 0) || (dumplfs_cfg->prog_size <= 0) ||
+    if ((dumplfs_cfg->src == NULL) || (dumplfs_cfg->dst == NULL) || (dumplfs_cfg->block_size <= 0) || (dumplfs_cfg->prog_size <= 0) ||
         (dumplfs_cfg->read_size <= 0)) {
     	fprintf(stderr, "parameter cannot be null\r\n");
         exit(1);
@@ -213,14 +259,14 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
 	}
     /* find the size of the filesystem */
     fseek(img, 0, SEEK_END);
-    fs_size = ftell(img);
-    if (fs_size < 0) {
+    dumplfs_cfg->fs_size = ftell(img);
+    if (dumplfs_cfg->fs_size < 0) {
     	fprintf(stderr, "can't read the image file file: errno=%d (%s)\r\n", errno, strerror(errno));
 		return -1;
     }
     fseek(img, 0, SEEK_SET);
 
-    if (fs_size % dumplfs_cfg->block_size) {
+    if (dumplfs_cfg->fs_size % dumplfs_cfg->block_size) {
     	fprintf(stderr, "image size is not aligned to dumplfs_cfg->block_size\r\n");
     	return -1;
     }
@@ -230,17 +276,17 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
     cfg.prog_size   = dumplfs_cfg->prog_size;
     cfg.cache_size  = dumplfs_cfg->cache_size;
     cfg.block_cycles = dumplfs_cfg->block_cycles;
-    cfg.block_count = fs_size / cfg.block_size;
+    cfg.block_count = dumplfs_cfg->fs_size / cfg.block_size;
     if (32 * ((cfg.block_count + 31) / 32) > dumplfs_cfg->lookahead_size)
         cfg.lookahead_size = dumplfs_cfg->lookahead_size;
 
-	cfg.context = calloc(1, fs_size);
+	cfg.context = calloc(1, dumplfs_cfg->fs_size);
 	if (!cfg.context) {
 		fprintf(stderr, "no memory for mount\r\n");
 		return -1;
 	}
 
-	if (fread(cfg.context, fs_size, 1, img) != 1) {
+	if (fread(cfg.context, dumplfs_cfg->fs_size, 1, img) != 1) {
 		fprintf(stderr, "Fail to read the image file\r\n");
 		return -1;
 	}
@@ -252,7 +298,7 @@ int dumplfs(dumplfs_cfg_t *dumplfs_cfg) {
 		return -1;
 	}
 
-	err = dump_dir(&lfs, "", dumplfs_cfg->dstdir);
+	err = dump_dir(&lfs, "", dumplfs_cfg->dst);
 	return err;
 }
 

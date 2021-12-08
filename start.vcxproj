@@ -130,11 +130,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="app\count.c" />
-    <ClCompile Include="app\dumplfs.c" />
-    <ClCompile Include="app\main.c" />
-    <ClCompile Include="app\mklfs.c" />
-    <ClCompile Include="app\OS_Mutexes.c" />
     <ClCompile Include="littlefs\api\lfs_dir_close.c" />
     <ClCompile Include="littlefs\api\lfs_dir_open.c" />
     <ClCompile Include="littlefs\api\lfs_dir_read.c" />
@@ -164,6 +159,7 @@
     <ClCompile Include="littlefs\api\lfs_setattr.c" />
     <ClCompile Include="littlefs\api\lfs_stat.c" />
     <ClCompile Include="littlefs\api\lfs_unmount.c" />
+    <ClCompile Include="littlefs\app\OS_Main.c" />
     <ClCompile Include="littlefs\data\bd\lfs_bd_cmp.c" />
     <ClCompile Include="littlefs\data\bd\lfs_bd_erase.c" />
     <ClCompile Include="littlefs\data\bd\lfs_bd_flush.c" />
@@ -314,8 +310,6 @@
     <ClCompile Include="littlefs\util\lfs_tole32.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="littlefs\inc\app.h" />
-    <ClInclude Include="littlefs\inc\dirent.h" />
     <ClInclude Include="littlefs\inc\Global.h" />
     <ClInclude Include="littlefs\inc\lfs.h" />
     <ClInclude Include="littlefs\inc\OS_Config.h" />
